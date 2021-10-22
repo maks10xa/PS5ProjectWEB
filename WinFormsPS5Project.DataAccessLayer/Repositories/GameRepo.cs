@@ -11,9 +11,15 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
     class GameRepo : IGameRepo
     {
         private PS5ProjContext _pS5ProjContext;
+
+        public GameRepo(PS5ProjContext pS5ProjContext)
+        {
+            pS5ProjContext = _pS5ProjContext;
+        }
+
         public List<Game> GetAllGames()
         {
-            throw new NotImplementedException();
+            return _pS5ProjContext.Games.ToList();
         }
 
         public Game GetGame(int id)
