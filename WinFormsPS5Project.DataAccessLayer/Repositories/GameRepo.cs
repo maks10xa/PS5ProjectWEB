@@ -22,14 +22,5 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             return _pS5ProjContext.Games.ToList();
         }
 
-        public Game GetGame(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Game GetGenre(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

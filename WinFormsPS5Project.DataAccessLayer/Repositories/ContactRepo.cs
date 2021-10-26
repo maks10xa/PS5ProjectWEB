@@ -14,10 +14,5 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
         {
             throw new NotImplementedException();
         }
-
-        public Contact GetPhoneNumber(int id)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

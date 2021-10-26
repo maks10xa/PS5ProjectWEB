@@ -10,11 +10,6 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
 {
     public class CostRepo : ICostRepo
     {
-        public Cost GetCost(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public Cost GetPeriod(int id)
         {
             throw new NotImplementedException();
