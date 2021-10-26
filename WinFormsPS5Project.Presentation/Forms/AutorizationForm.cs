@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
+using WinFormsPS5Project.Presentation.ModelServices;
+using WinFormsPS5Project.Presentation.ModelServices.Interfaces;
 
 namespace WinFormsPS5Project.Presentation
 {
     public partial class AutorizationForm : Form
     {
-        public AutorizationForm()
+        private IUserService _userService;
+        private IUserAccaunt _user;
+
+        public AutorizationForm(IUserService userService)
         {
             InitializeComponent();
+
+            _userService = userService;
         }
 
         private void _goToRegistration_Click(object sender, EventArgs e)
@@ -41,10 +49,29 @@ namespace WinFormsPS5Project.Presentation
 
         private void _logInBtn_Click(object sender, EventArgs e)
         {
-            string loginUser = _loginFIeld.Text;
-            string passUser = _passwordField.Text;
+            var loginUser = _loginFIeld.Text;
+            var passUser = _passwordField.Text;
 
+            var user = new UserAccount();
 
+            if (string.IsNullOrEmpty(loginUser) || string.IsNullOrEmpty(passUser))
+            {
+                MessageBox.Show(Constant.EmptyLoginPass, Constant.AuthorizedError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            var isUserConsistInDb = _userService.IsUserConsistInDB(loginUser);
+
+            if (isUserConsistInDb)
+            {
+                user.User = _userService.GetUserByLogin(loginUser, passUser);
+                this.Hide();
+                Menu menuForm = new Menu();
+                menuForm.Show();
+            }
+            else
+            {
+                MessageBox.Show(Constant.NoUsersInDb, Constant.AuthorizedError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -26,17 +26,28 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
 
         public void Add(UsersModel user)
         {
-            throw new NotImplementedException();
+            var user1 = _mapper.Map<User>(user);
+
+            _userRepo.Add(user1);
+            _pS5ProjContext.SaveChanges();
         }
 
         public UsersModel GetUserByLogin(string login, string password)
         {
-            throw new NotImplementedException();
+            var user = _userRepo.GetUserByLogin(login, password);
+
+            var user1 = _mapper.Map<UsersModel>(user);
+
+            return user1;
         }
 
         public bool IsUserConsistInDB(string login)
         {
-            throw new NotImplementedException();
+            var user = _userRepo.IsUserConsistInDB(login);
+
+            var user1 = _mapper.Map<bool>(user);
+
+            return user1;
         }
     }
 }
