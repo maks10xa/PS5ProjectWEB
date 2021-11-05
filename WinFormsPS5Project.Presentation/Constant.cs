@@ -10,7 +10,6 @@ namespace WinFormsPS5Project.Presentation
     {
         public const string EmptyLoginPass = "Поля Логин и Пароль должны быть заполнены";
         public const string AuthorizedError = "Ошибка авторизации!";
-
-        public const string NoUsersInDb = "Такого пользователя не существует, проверьте введенные данные!"; 
+        public const string NoUsersInDb = "Такого пользователя не существует, проверьте введенные данные или зарегистрируйтесь!"; 
     }
 }

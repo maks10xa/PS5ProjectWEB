@@ -27,6 +27,8 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
             if (!optionsBuilder.IsConfigured)
             {
                 optionsBuilder.UseSqlServer("Server=localhost;Database=PS5Proj;Trusted_Connection=True;");
+
+
             }
         }
 

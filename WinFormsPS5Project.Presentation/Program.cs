@@ -15,12 +15,12 @@ namespace WinFormsPS5Project.Presentation
         [STAThread]
         static void Main()
         {
-            using (PS5ProjContext db = new PS5ProjContext())
-
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AutorizationForm());
+
+            var container = DependencyInjections.Bootstrap();
+            Application.Run(container.GetInstance<AutorizationForm>());
         }
     }
 }

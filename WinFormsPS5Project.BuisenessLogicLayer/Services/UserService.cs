@@ -11,7 +11,7 @@ using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
 
 namespace WinFormsPS5Project.BuisenessLogicLayer.Services
 {
-    class UserService : IUserService
+    public class UserService : IUserService
     {
         private PS5ProjContext _pS5ProjContext;
         private IUserRepo _userRepo;

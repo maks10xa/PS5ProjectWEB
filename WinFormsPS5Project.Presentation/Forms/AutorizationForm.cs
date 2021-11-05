@@ -18,11 +18,12 @@ namespace WinFormsPS5Project.Presentation
         private IUserService _userService;
         private IUserAccaunt _user;
 
-        public AutorizationForm(IUserService userService)
+        public AutorizationForm(IUserService userService, IUserAccaunt user)
         {
             InitializeComponent();
 
             _userService = userService;
+            _user = user;
         }
 
         private void _goToRegistration_Click(object sender, EventArgs e)
@@ -52,7 +53,7 @@ namespace WinFormsPS5Project.Presentation
             var loginUser = _loginFIeld.Text;
             var passUser = _passwordField.Text;
 
-            var user = new UserAccount();
+           // var user = new UserAccount();
 
             if (string.IsNullOrEmpty(loginUser) || string.IsNullOrEmpty(passUser))
             {
@@ -63,7 +64,7 @@ namespace WinFormsPS5Project.Presentation
 
             if (isUserConsistInDb)
             {
-                user.User = _userService.GetUserByLogin(loginUser, passUser);
+                _user.User = _userService.GetUserByLogin(loginUser, passUser);
                 this.Hide();
                 Menu menuForm = new Menu();
                 menuForm.Show();
