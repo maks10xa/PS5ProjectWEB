@@ -101,6 +101,7 @@ namespace WinFormsPS5Project.Presentation
             this._infoTextBox.Location = new System.Drawing.Point(34, 118);
             this._infoTextBox.Multiline = true;
             this._infoTextBox.Name = "_infoTextBox";
+            this._infoTextBox.ReadOnly = true;
             this._infoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this._infoTextBox.Size = new System.Drawing.Size(733, 306);
             this._infoTextBox.TabIndex = 21;

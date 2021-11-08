@@ -34,7 +34,7 @@ namespace WinFormsPS5Project.Presentation
             this._loginFIeld = new System.Windows.Forms.TextBox();
             this._passwordLabel = new System.Windows.Forms.Label();
             this._дщпштLabel = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this._nameField = new System.Windows.Forms.TextBox();
             this._nameLabel = new System.Windows.Forms.Label();
             this._registerBtn = new System.Windows.Forms.Button();
             this._closeBtn = new System.Windows.Forms.Button();
@@ -84,12 +84,12 @@ namespace WinFormsPS5Project.Presentation
             this._дщпштLabel.TabIndex = 5;
             this._дщпштLabel.Text = "Логин";
             // 
-            // textBox2
+            // _nameField
             // 
-            this.textBox2.Location = new System.Drawing.Point(304, 234);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 27);
-            this.textBox2.TabIndex = 11;
+            this._nameField.Location = new System.Drawing.Point(304, 234);
+            this._nameField.Name = "_nameField";
+            this._nameField.Size = new System.Drawing.Size(213, 27);
+            this._nameField.TabIndex = 11;
             // 
             // _nameLabel
             // 
@@ -109,6 +109,7 @@ namespace WinFormsPS5Project.Presentation
             this._registerBtn.TabIndex = 12;
             this._registerBtn.Text = "Зарегистрироваться";
             this._registerBtn.UseVisualStyleBackColor = true;
+            this._registerBtn.Click += new System.EventHandler(this._registerBtn_Click);
             // 
             // _closeBtn
             // 
@@ -119,6 +120,7 @@ namespace WinFormsPS5Project.Presentation
             this._closeBtn.TabIndex = 15;
             this._closeBtn.Text = "Закрыть";
             this._closeBtn.UseVisualStyleBackColor = false;
+            this._closeBtn.Click += new System.EventHandler(this._closeBtn_Click);
             // 
             // RegistrationForm
             // 
@@ -127,7 +129,7 @@ namespace WinFormsPS5Project.Presentation
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this._closeBtn);
             this.Controls.Add(this._registerBtn);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this._nameField);
             this.Controls.Add(this._nameLabel);
             this.Controls.Add(this._passwordField);
             this.Controls.Add(this._loginFIeld);
@@ -149,7 +151,7 @@ namespace WinFormsPS5Project.Presentation
         private System.Windows.Forms.TextBox _loginFIeld;
         private System.Windows.Forms.Label _passwordLabel;
         private System.Windows.Forms.Label _дщпштLabel;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox _nameField;
         private System.Windows.Forms.Label _nameLabel;
         private System.Windows.Forms.Button _registerBtn;
         private System.Windows.Forms.Button _closeBtn;

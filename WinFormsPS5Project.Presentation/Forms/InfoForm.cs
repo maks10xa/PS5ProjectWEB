@@ -15,6 +15,7 @@ namespace WinFormsPS5Project.Presentation
         public InfoForm()
         {
             InitializeComponent();
+            _infoTextBox.Text = Constant.InfoText;
         }
     }
 }

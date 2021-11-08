@@ -35,6 +35,11 @@ namespace WinFormsPS5Project.Presentation
             this._infoBtn = new System.Windows.Forms.Button();
             this._contactsBtn = new System.Windows.Forms.Button();
             this._closeBtn = new System.Windows.Forms.Button();
+            this._profilePhoto = new System.Windows.Forms.PictureBox();
+            this._nameTxt = new System.Windows.Forms.TextBox();
+            this._loginTxt = new System.Windows.Forms.TextBox();
+            this._gamesListTxt = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this._profilePhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // _profileBtn
@@ -94,11 +99,49 @@ namespace WinFormsPS5Project.Presentation
             this._closeBtn.Text = "Закрыть";
             this._closeBtn.UseVisualStyleBackColor = false;
             // 
+            // _profilePhoto
+            // 
+            this._profilePhoto.Image = global::WinFormsPS5Project.Presentation.Properties.Resources._197297;
+            this._profilePhoto.Location = new System.Drawing.Point(34, 78);
+            this._profilePhoto.Name = "_profilePhoto";
+            this._profilePhoto.Size = new System.Drawing.Size(259, 195);
+            this._profilePhoto.TabIndex = 16;
+            this._profilePhoto.TabStop = false;
+            // 
+            // _nameTxt
+            // 
+            this._nameTxt.Location = new System.Drawing.Point(358, 78);
+            this._nameTxt.Name = "_nameTxt";
+            this._nameTxt.Size = new System.Drawing.Size(196, 27);
+            this._nameTxt.TabIndex = 17;
+            // 
+            // _loginTxt
+            // 
+            this._loginTxt.Location = new System.Drawing.Point(358, 126);
+            this._loginTxt.Name = "_loginTxt";
+            this._loginTxt.Size = new System.Drawing.Size(196, 27);
+            this._loginTxt.TabIndex = 18;
+            // 
+            // _gamesListTxt
+            // 
+            this._gamesListTxt.Location = new System.Drawing.Point(358, 186);
+            this._gamesListTxt.Multiline = true;
+            this._gamesListTxt.Name = "_gamesListTxt";
+            this._gamesListTxt.ReadOnly = true;
+            this._gamesListTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this._gamesListTxt.Size = new System.Drawing.Size(413, 146);
+            this._gamesListTxt.TabIndex = 19;
+            this._gamesListTxt.Text = "Список любимых игр: ";
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this._gamesListTxt);
+            this.Controls.Add(this._loginTxt);
+            this.Controls.Add(this._nameTxt);
+            this.Controls.Add(this._profilePhoto);
             this.Controls.Add(this._closeBtn);
             this.Controls.Add(this._contactsBtn);
             this.Controls.Add(this._infoBtn);
@@ -108,7 +151,9 @@ namespace WinFormsPS5Project.Presentation
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Menu";
             this.Text = "Menu";
+            ((System.ComponentModel.ISupportInitialize)(this._profilePhoto)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -120,5 +165,9 @@ namespace WinFormsPS5Project.Presentation
         private System.Windows.Forms.Button _infoBtn;
         private System.Windows.Forms.Button _contactsBtn;
         private System.Windows.Forms.Button _closeBtn;
+        private System.Windows.Forms.PictureBox _profilePhoto;
+        private System.Windows.Forms.TextBox _nameTxt;
+        private System.Windows.Forms.TextBox _loginTxt;
+        private System.Windows.Forms.TextBox _gamesListTxt;
     }
 }

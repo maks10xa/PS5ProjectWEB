@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SimpleInjector;
 using SimpleInjector.Diagnostics;
 using System;
@@ -36,6 +37,8 @@ namespace WinFormsPS5Project.Presentation
 
             AutoRegisterWindowsForms(container);
 
+            container.Register<MapperProvider>();
+            container.RegisterSingleton(() => GetMapper(container));
             container.Verify();
 
             return container;
@@ -58,5 +61,19 @@ namespace WinFormsPS5Project.Presentation
                 container.AddRegistration(type, registration);
             }
         }
+
+        private static IMapper GetMapper(Container container)
+        {
+            var mp = container.GetInstance<MapperProvider>();
+            return mp.GetMapper();
+        }
+
+        //private static void RegisterForm<TForm>(this Container container) where TForm : Form
+        //{
+        //    var registration = Lifestyle.Transient.CreateRegistration<TForm>(container);
+        //    registration.SuppressDiagnosticWarning(DiagnosticType.DisposableTransientComponent, "Done manually.");
+        //    container.AddRegistration<TForm>(registration);
+        //}
     }
 }
+

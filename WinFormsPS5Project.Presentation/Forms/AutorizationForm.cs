@@ -29,7 +29,7 @@ namespace WinFormsPS5Project.Presentation
         private void _goToRegistration_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrationForm registrationForm = new RegistrationForm();
+            RegistrationForm registrationForm = new RegistrationForm(_userService, _user);
             registrationForm.Show();
         }
 
@@ -66,7 +66,7 @@ namespace WinFormsPS5Project.Presentation
             {
                 _user.User = _userService.GetUserByLogin(loginUser, passUser);
                 this.Hide();
-                Menu menuForm = new Menu();
+                Menu menuForm = new Menu(_user, _userService);
                 menuForm.Show();
             }
             else
