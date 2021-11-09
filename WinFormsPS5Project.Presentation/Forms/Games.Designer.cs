@@ -55,6 +55,7 @@ namespace WinFormsPS5Project.Presentation
             this._contactsBtn.Text = "Контакты";
             this._contactsBtn.UseVisualStyleBackColor = true;
             this._contactsBtn.UseWaitCursor = true;
+            this._contactsBtn.Click += new System.EventHandler(this._contactsBtn_Click);
             // 
             // _infoBtn
             // 
@@ -65,6 +66,7 @@ namespace WinFormsPS5Project.Presentation
             this._infoBtn.Text = "О нас";
             this._infoBtn.UseVisualStyleBackColor = true;
             this._infoBtn.UseWaitCursor = true;
+            this._infoBtn.Click += new System.EventHandler(this._infoBtn_Click);
             // 
             // _costsBtn
             // 
@@ -75,6 +77,7 @@ namespace WinFormsPS5Project.Presentation
             this._costsBtn.Text = "Цены";
             this._costsBtn.UseVisualStyleBackColor = true;
             this._costsBtn.UseWaitCursor = true;
+            this._costsBtn.Click += new System.EventHandler(this._costsBtn_Click);
             // 
             // _gamesBtn
             // 
@@ -97,6 +100,7 @@ namespace WinFormsPS5Project.Presentation
             this._profileBtn.Text = "Профиль";
             this._profileBtn.UseVisualStyleBackColor = true;
             this._profileBtn.UseWaitCursor = true;
+            this._profileBtn.Click += new System.EventHandler(this._profileBtn_Click);
             // 
             // _listOfGamesLabel
             // 
@@ -116,6 +120,7 @@ namespace WinFormsPS5Project.Presentation
             this._listGamesComboBox.Size = new System.Drawing.Size(487, 28);
             this._listGamesComboBox.TabIndex = 11;
             this._listGamesComboBox.UseWaitCursor = true;
+            this._listGamesComboBox.SelectedIndexChanged += new System.EventHandler(this._listGamesComboBox_SelectedIndexChanged);
             // 
             // _NameOfGameLabel
             // 
@@ -180,6 +185,7 @@ namespace WinFormsPS5Project.Presentation
             this._addToFavouriteBtn.Text = "Добавить в избранное";
             this._addToFavouriteBtn.UseVisualStyleBackColor = true;
             this._addToFavouriteBtn.UseWaitCursor = true;
+            this._addToFavouriteBtn.Click += new System.EventHandler(this._addToFavouriteBtn_Click);
             // 
             // _closeBtn
             // 
@@ -191,6 +197,7 @@ namespace WinFormsPS5Project.Presentation
             this._closeBtn.Text = "Закрыть";
             this._closeBtn.UseVisualStyleBackColor = false;
             this._closeBtn.UseWaitCursor = true;
+            this._closeBtn.Click += new System.EventHandler(this._closeBtn_Click);
             // 
             // Games
             // 

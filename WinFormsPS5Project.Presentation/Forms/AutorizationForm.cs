@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
+using WinFormsPS5Project.DataAccessLayer.Models;
+using WinFormsPS5Project.DataAccessLayer.Repositories;
+using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
 using WinFormsPS5Project.Presentation.ModelServices;
 using WinFormsPS5Project.Presentation.ModelServices.Interfaces;
 
@@ -15,21 +20,28 @@ namespace WinFormsPS5Project.Presentation
 {
     public partial class AutorizationForm : Form
     {
+        private PS5ProjContext _pS5ProjContext;
+        private IMapper _mapper;
+        private IUserRepo _user;
+        private IUserAccaunt _userAccaunt;
         private IUserService _userService;
-        private IUserAccaunt _user;
 
-        public AutorizationForm(IUserService userService, IUserAccaunt user)
+        public AutorizationForm()
         {
             InitializeComponent();
+            var config = new AutoMapper.MapperConfiguration(c => c.AddProfile(new MapperProfile()));
+            _mapper = config.CreateMapper();
 
-            _userService = userService;
-            _user = user;
+            _pS5ProjContext = new PS5ProjContext();
+            _userAccaunt = new UserAccount();
+            _user = new UserRepo(_pS5ProjContext);
+            _userService = new UserService(_pS5ProjContext, _user, _mapper);
         }
 
         private void _goToRegistration_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrationForm registrationForm = new RegistrationForm(_userService, _user);
+            RegistrationForm registrationForm = new RegistrationForm(_userAccaunt, _pS5ProjContext, _user, _mapper);
             registrationForm.Show();
         }
 
@@ -53,8 +65,6 @@ namespace WinFormsPS5Project.Presentation
             var loginUser = _loginFIeld.Text;
             var passUser = _passwordField.Text;
 
-           // var user = new UserAccount();
-
             if (string.IsNullOrEmpty(loginUser) || string.IsNullOrEmpty(passUser))
             {
                 MessageBox.Show(Constant.EmptyLoginPass, Constant.AuthorizedError, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -64,9 +74,9 @@ namespace WinFormsPS5Project.Presentation
 
             if (isUserConsistInDb)
             {
-                _user.User = _userService.GetUserByLogin(loginUser, passUser);
+                _userAccaunt.User = _userService.GetUserByLogin(loginUser, passUser);
                 this.Hide();
-                Menu menuForm = new Menu(_user, _userService);
+                Menu menuForm = new Menu(_userAccaunt, _mapper);
                 menuForm.Show();
             }
             else

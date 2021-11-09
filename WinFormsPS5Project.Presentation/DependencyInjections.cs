@@ -26,6 +26,8 @@ namespace WinFormsPS5Project.Presentation
 
             container.Register<IUserAccaunt, UserAccount>(Lifestyle.Singleton);
             container.Register<IUserService, UserService>();
+            container.Register<IGameService, GameService>(); 
+
 
             container.Register(() =>
             {
@@ -34,6 +36,7 @@ namespace WinFormsPS5Project.Presentation
             }, Lifestyle.Singleton);
 
             container.Register<IUserRepo, UserRepo>();
+            container.Register<IGameRepo, GameRepo>();
 
             AutoRegisterWindowsForms(container);
 

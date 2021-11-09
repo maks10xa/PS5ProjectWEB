@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WinFormsPS5Project.DataAccessLayer.Models;
 
-namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
+namespace WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces
 {
-    public interface IContactRepo
+    interface IContactService
     {
         string GetAdminNumberByUserId(int id);
     }

@@ -32,8 +32,8 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
         {
             var user = _pS5ProjContext.Users.FirstOrDefault(u => u.UserLogin == login && u.Pass == password);
 
-            return user;
-        }
+          return user;
+          }
 
         public bool IsUserConsistInDB(string login)
         {

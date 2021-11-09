@@ -19,8 +19,7 @@ namespace WinFormsPS5Project.Presentation
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var container = DependencyInjections.Bootstrap();
-            Application.Run(container.GetInstance<AutorizationForm>());
+            Application.Run(new AutorizationForm());
         }
     }
 }

@@ -4,18 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
-using WinFormsPS5Project.DataAccessLayer.Repositories;
 using WinFormsPS5Project.Presentation.ModelServices.Interfaces;
 
 namespace WinFormsPS5Project.Presentation.ModelServices
 {
-    public class UserAccount : IUserAccaunt
+    public class Games : IGames
     {
-        public UsersModel User { get; set; }
+        public GamesModel Game { get; set; }
 
-        public UserAccount()
+        public Games()
         {
-            User = new UsersModel();
+            Game = new GamesModel();
         }
     }
 }

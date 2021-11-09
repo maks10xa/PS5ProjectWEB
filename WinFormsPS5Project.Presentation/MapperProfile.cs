@@ -13,7 +13,10 @@ namespace WinFormsPS5Project.Presentation
     {
         public MapperProfile()
         {
-            CreateMap<UsersModel, User>();
+            CreateMap<UsersModel, User>().ReverseMap();
+            CreateMap<GamesModel, Game>().ReverseMap();
+            CreateMap<ContactsModel, Contact>().ReverseMap();
+            CreateMap<CostsModel, Cost>().ReverseMap();
         }
     }
 }

@@ -61,6 +61,7 @@ namespace WinFormsPS5Project.Presentation
             this._gamesBtn.TabIndex = 1;
             this._gamesBtn.Text = "Игры";
             this._gamesBtn.UseVisualStyleBackColor = true;
+            this._gamesBtn.Click += new System.EventHandler(this._gamesBtn_Click);
             // 
             // _costsBtn
             // 
@@ -70,6 +71,7 @@ namespace WinFormsPS5Project.Presentation
             this._costsBtn.TabIndex = 2;
             this._costsBtn.Text = "Цены";
             this._costsBtn.UseVisualStyleBackColor = true;
+            this._costsBtn.Click += new System.EventHandler(this._costsBtn_Click);
             // 
             // _infoBtn
             // 
@@ -79,6 +81,7 @@ namespace WinFormsPS5Project.Presentation
             this._infoBtn.TabIndex = 3;
             this._infoBtn.Text = "О нас";
             this._infoBtn.UseVisualStyleBackColor = true;
+            this._infoBtn.Click += new System.EventHandler(this._infoBtn_Click);
             // 
             // _contactsBtn
             // 
@@ -88,6 +91,7 @@ namespace WinFormsPS5Project.Presentation
             this._contactsBtn.TabIndex = 4;
             this._contactsBtn.Text = "Контакты";
             this._contactsBtn.UseVisualStyleBackColor = true;
+            this._contactsBtn.Click += new System.EventHandler(this._contactsBtn_Click);
             // 
             // _closeBtn
             // 
@@ -98,6 +102,7 @@ namespace WinFormsPS5Project.Presentation
             this._closeBtn.TabIndex = 15;
             this._closeBtn.Text = "Закрыть";
             this._closeBtn.UseVisualStyleBackColor = false;
+            this._closeBtn.Click += new System.EventHandler(this._closeBtn_Click);
             // 
             // _profilePhoto
             // 

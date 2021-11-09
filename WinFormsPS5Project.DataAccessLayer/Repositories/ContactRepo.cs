@@ -10,9 +10,18 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
 {
     public class ContactRepo : IContactRepo
     {
-        public Contact GetName(int id)
+        private PS5ProjContext _pS5ProjContext;
+
+        public ContactRepo(PS5ProjContext pS5ProjContext)
         {
-            throw new NotImplementedException();
+            _pS5ProjContext = pS5ProjContext;
+        }
+
+        public string GetAdminNumberByUserId(int id)
+        {
+            var number = _pS5ProjContext.Contacts.FirstOrDefault(n => n.UserId == id);
+
+            return number.PhoneNumber;
         }
     }
 }

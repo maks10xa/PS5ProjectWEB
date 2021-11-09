@@ -8,7 +8,7 @@ using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
 
 namespace WinFormsPS5Project.DataAccessLayer.Repositories
 {
-    class GameRepo : IGameRepo
+    public class GameRepo : IGameRepo
     {
         private PS5ProjContext _pS5ProjContext;
 
@@ -20,6 +20,13 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
         public List<Game> GetAllGames()
         {
             return _pS5ProjContext.Games.ToList();
+        }
+
+        public Game GetGameByName(string name)
+        {
+            var game = _pS5ProjContext.Games.FirstOrDefault(g => g.GameName == name);
+
+            return game;
         }
 
     }

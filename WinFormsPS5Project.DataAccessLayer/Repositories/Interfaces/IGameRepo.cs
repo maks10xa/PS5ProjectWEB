@@ -10,5 +10,6 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
     public interface IGameRepo
     {
         List<Game> GetAllGames();
+        Game GetGameByName(string name);
     }
 }
