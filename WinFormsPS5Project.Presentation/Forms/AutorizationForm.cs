@@ -76,7 +76,7 @@ namespace WinFormsPS5Project.Presentation
             {
                 _userAccaunt.User = _userService.GetUserByLogin(loginUser, passUser);
                 this.Hide();
-                Menu menuForm = new Menu(_userAccaunt, _mapper);
+                Menu menuForm = new Menu(_userAccaunt, _mapper, _pS5ProjContext);
                 menuForm.Show();
             }
             else

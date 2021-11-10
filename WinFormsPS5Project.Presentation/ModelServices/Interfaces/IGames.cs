@@ -9,6 +9,6 @@ namespace WinFormsPS5Project.Presentation.ModelServices.Interfaces
 {
     public interface IGames
     {
-        GamesModel Game { get; set; }
+        List<GamesModel> Game { get; set; }
     }
 }

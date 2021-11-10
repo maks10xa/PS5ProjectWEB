@@ -10,11 +10,11 @@ namespace WinFormsPS5Project.Presentation.ModelServices
 {
     public class Games : IGames
     {
-        public GamesModel Game { get; set; }
+        public List<GamesModel> Game { get; set; }
 
         public Games()
         {
-            Game = new GamesModel();
+            Game = new List<GamesModel>();
         }
     }
 }

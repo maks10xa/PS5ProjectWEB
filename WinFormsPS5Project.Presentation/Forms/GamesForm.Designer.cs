@@ -1,7 +1,7 @@
 ﻿
 namespace WinFormsPS5Project.Presentation
 {
-    partial class Games
+    partial class GamesForm
     {
         /// <summary>
         /// Required designer variable.

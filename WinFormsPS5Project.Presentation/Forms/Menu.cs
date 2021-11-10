@@ -19,12 +19,14 @@ namespace WinFormsPS5Project.Presentation
     {
         private IUserAccaunt _userAccaunt;
         private IMapper _mapper;
+        private PS5ProjContext _pS5ProjContext;
 
-        public Menu(IUserAccaunt userAccaunt, IMapper mapper)
+        public Menu(IUserAccaunt userAccaunt, IMapper mapper, PS5ProjContext pS5ProjContext)
         {
             InitializeComponent();
 
             _mapper = mapper;
+            _pS5ProjContext = pS5ProjContext;
             _userAccaunt = userAccaunt;
 
             _nameTxt.Text = userAccaunt.User.UserName;
@@ -34,28 +36,28 @@ namespace WinFormsPS5Project.Presentation
         private void _gamesBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Games gamesForm = new Games(_userAccaunt);
+            GamesForm gamesForm = new GamesForm(_userAccaunt, _mapper, _pS5ProjContext);
             gamesForm.Show();
         }
 
         private void _costsBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CostsForm costsForm = new CostsForm(_userAccaunt);
+            CostsForm costsForm = new CostsForm(_userAccaunt, _mapper, _pS5ProjContext);
             costsForm.Show();
         }
 
         private void _infoBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            InfoForm infoForm = new InfoForm(_userAccaunt);
+            InfoForm infoForm = new InfoForm(_userAccaunt, _mapper, _pS5ProjContext);
             infoForm.Show();
         }
 
         private void _contactsBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ContactsForm contactsForm = new ContactsForm(_userAccaunt);
+            ContactsForm contactsForm = new ContactsForm(_userAccaunt, _mapper, _pS5ProjContext);
             contactsForm.Show();
         }
 
