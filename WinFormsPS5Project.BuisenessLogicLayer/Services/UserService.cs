@@ -36,7 +36,6 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
         public UsersModel GetUserByLogin(string login, string password)
         {
             var user = _userRepo.GetUserByLogin(login, password);
-
             var user1 = _mapper.Map<UsersModel>(user);
 
             return user1;
@@ -49,6 +48,15 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             var user1 = _mapper.Map<bool>(user);
 
             return user1;
+        }
+
+        public void AddFavoriteGame(UsersModel user, string game)
+        {
+            var u = _mapper.Map<User>(user);
+
+            _userRepo.AddFavoriteGame(u, game);
+
+            _pS5ProjContext.SaveChanges();
         }
     }
 }

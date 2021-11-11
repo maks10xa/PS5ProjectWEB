@@ -24,11 +24,12 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             _mapper = mapper;
         }
 
-        public string GetAdminNumberByUserId(int id)
+        public ContactsModel GetAdmin(int id)
         {
-            var number = _contactRepo.GetAdminNumberByUserId(id);
+            var cont = _contactRepo.GetAdmin(id);
+            var cont1 = _mapper.Map<ContactsModel>(cont);
 
-            return number;
+            return cont1;
         }
     }
 }

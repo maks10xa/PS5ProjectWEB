@@ -9,6 +9,6 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
 {
     public interface IContactRepo
     {
-        string GetAdminNumberByUserId(int id);
+        Contact GetAdmin(int id);
     }
 }

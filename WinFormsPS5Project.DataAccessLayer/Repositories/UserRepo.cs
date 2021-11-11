@@ -41,5 +41,12 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
 
             return isUser;
         }
+
+        public void AddFavoriteGame(User user, string game)
+        {
+            var user1 = _pS5ProjContext.Users.FirstOrDefault(u => u.UserLogin == user.UserLogin);
+
+            user1.FavoriteGame = game;
+        }
     }
 }

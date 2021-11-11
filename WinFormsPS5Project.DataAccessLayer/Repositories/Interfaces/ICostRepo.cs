@@ -9,7 +9,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
 {
     public interface ICostRepo
     {
-        Cost GetPeriod(int id);
-        Cost GetCost(int id);
+        Cost GetCostById(int id);
+        List<Cost> GetAllCosts();
     }
 }

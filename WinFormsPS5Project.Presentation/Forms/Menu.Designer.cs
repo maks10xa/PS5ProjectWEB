@@ -136,7 +136,6 @@ namespace WinFormsPS5Project.Presentation
             this._gamesListTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this._gamesListTxt.Size = new System.Drawing.Size(413, 146);
             this._gamesListTxt.TabIndex = 19;
-            this._gamesListTxt.Text = "Список любимых игр: ";
             // 
             // Menu
             // 

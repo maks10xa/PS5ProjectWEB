@@ -68,7 +68,9 @@ namespace WinFormsPS5Project.Presentation
                 {
                     UserLogin = login,
                     Pass = pass,
-                    UserName = name
+                    UserName = name,
+                    FavoriteGame = null,
+                    Contacts = null
                 };
 
                 userService.Add(user);

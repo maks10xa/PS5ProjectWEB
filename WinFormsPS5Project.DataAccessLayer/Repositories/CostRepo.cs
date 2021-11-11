@@ -10,14 +10,21 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
 {
     public class CostRepo : ICostRepo
     {
-        public Cost GetCost(int id)
+        private PS5ProjContext _pS5ProjContext;
+
+        public CostRepo(PS5ProjContext pS5ProjContext)
         {
-            throw new NotImplementedException();
+            _pS5ProjContext = pS5ProjContext;
+        }
+        public Cost GetCostById(int id)
+        {
+            var cost = _pS5ProjContext.Costs.FirstOrDefault(c => c.Id == id);
+            return cost;
         }
 
-        public Cost GetPeriod(int id)
+        public List<Cost> GetAllCosts()
         {
-            throw new NotImplementedException();
+            return _pS5ProjContext.Costs.ToList();
         }
     }
 }

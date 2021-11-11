@@ -14,7 +14,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
 
         public GameRepo(PS5ProjContext pS5ProjContext)
         {
-            pS5ProjContext = _pS5ProjContext;
+            _pS5ProjContext = pS5ProjContext;
         }
 
         public List<Game> GetAllGames()

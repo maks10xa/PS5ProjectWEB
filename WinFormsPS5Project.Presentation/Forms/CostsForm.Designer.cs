@@ -97,6 +97,7 @@ namespace WinFormsPS5Project.Presentation
             this._costsListCheckBox.Name = "_costsListCheckBox";
             this._costsListCheckBox.Size = new System.Drawing.Size(207, 28);
             this._costsListCheckBox.TabIndex = 15;
+            this._costsListCheckBox.SelectedIndexChanged += new System.EventHandler(this._costsListCheckBox_SelectedIndexChanged);
             // 
             // _costTextBox
             // 

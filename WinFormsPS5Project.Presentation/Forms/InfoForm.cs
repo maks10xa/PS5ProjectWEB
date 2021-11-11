@@ -20,14 +20,16 @@ namespace WinFormsPS5Project.Presentation
         private IMapper _mapper;
         private PS5ProjContext _pS5ProjContext;
         private IUserAccaunt _userAccaunt;
+        private IUserService _userService;
 
-        public InfoForm(IUserAccaunt userAccaunt, IMapper mapper, PS5ProjContext pS5ProjContext)
+        public InfoForm(IUserAccaunt userAccaunt, IUserService userService, IMapper mapper, PS5ProjContext pS5ProjContext)
         {
             InitializeComponent();
 
             _mapper = mapper;
             _pS5ProjContext = pS5ProjContext;
             _userAccaunt = userAccaunt;
+            _userService = userService;
 
             _infoTextBox.Text = Constant.InfoText;  
         }
@@ -35,28 +37,28 @@ namespace WinFormsPS5Project.Presentation
         private void _profileBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu menuForm = new Menu(_userAccaunt, _mapper, _pS5ProjContext);
+            Menu menuForm = new Menu(_userAccaunt, _userService, _mapper, _pS5ProjContext);
             menuForm.Show();
         }
 
         private void _gamesBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GamesForm gamesForm = new GamesForm(_userAccaunt, _mapper, _pS5ProjContext);
+            GamesForm gamesForm = new GamesForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
             gamesForm.Show();
         }
 
         private void _costsBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CostsForm costsForm = new CostsForm(_userAccaunt, _mapper, _pS5ProjContext);
+            CostsForm costsForm = new CostsForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
             costsForm.Show();
         }
 
         private void _contactsBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ContactsForm contactsForm = new ContactsForm(_userAccaunt, _mapper, _pS5ProjContext);
+            ContactsForm contactsForm = new ContactsForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
             contactsForm.Show();
         }
 

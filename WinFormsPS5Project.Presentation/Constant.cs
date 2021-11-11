@@ -25,5 +25,11 @@ namespace WinFormsPS5Project.Presentation
                                        "\n— В течение периода проката Sony PlayStation 5 мы консультируем Вас и всегда рады помочь Вам разобраться в вопросах которые могут Вас беспокоить;" +
                                        "\n— По окончанию периода аренды Playstation 5 мы приезжаем к Вам (если вы не захотите продлить период аренды) и забираем оборудование!";
 
+        public const string GamesNullComboBox = "Пока не добавлено";
+
+        public const string FavoriteGame = "Любимая игра: ";
+        public const string AddGameToFavorite = "Игра добавлена в избранное!";
+
+        public const string RoublesInCostsForm = "Рублей";
     }
 }

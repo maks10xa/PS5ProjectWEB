@@ -12,5 +12,6 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
         void Add(User user);
         User GetUserByLogin(string login, string password);
         bool IsUserConsistInDB(string login);
+        void AddFavoriteGame(User user, string game);
     }
 }

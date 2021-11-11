@@ -17,11 +17,11 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             _pS5ProjContext = pS5ProjContext;
         }
 
-        public string GetAdminNumberByUserId(int id)
+        public Contact GetAdmin(int id)
         {
-            var number = _pS5ProjContext.Contacts.FirstOrDefault(n => n.UserId == id);
+            var cont = _pS5ProjContext.Contacts.FirstOrDefault(c => c.UserId == id);
 
-            return number.PhoneNumber;
+            return cont;
         }
     }
 }
