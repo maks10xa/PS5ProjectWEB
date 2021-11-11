@@ -166,6 +166,7 @@ namespace WinFormsPS5Project.Presentation
             this._genreTextBox.Name = "_genreTextBox";
             this._genreTextBox.Size = new System.Drawing.Size(180, 27);
             this._genreTextBox.TabIndex = 16;
+            this._genreTextBox.Text = " ";
             this._genreTextBox.UseWaitCursor = true;
             // 
             // _releaseDateTextBox
@@ -174,6 +175,7 @@ namespace WinFormsPS5Project.Presentation
             this._releaseDateTextBox.Name = "_releaseDateTextBox";
             this._releaseDateTextBox.Size = new System.Drawing.Size(153, 27);
             this._releaseDateTextBox.TabIndex = 17;
+            this._releaseDateTextBox.Text = " ";
             this._releaseDateTextBox.UseWaitCursor = true;
             // 
             // _addToFavouriteBtn
@@ -199,7 +201,7 @@ namespace WinFormsPS5Project.Presentation
             this._closeBtn.UseWaitCursor = true;
             this._closeBtn.Click += new System.EventHandler(this._closeBtn_Click);
             // 
-            // Games
+            // GamesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,7 +222,7 @@ namespace WinFormsPS5Project.Presentation
             this.Controls.Add(this._gamesBtn);
             this.Controls.Add(this._profileBtn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Games";
+            this.Name = "GamesForm";
             this.Text = "Games";
             this.UseWaitCursor = true;
             this.ResumeLayout(false);

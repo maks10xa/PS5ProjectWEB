@@ -32,6 +32,8 @@ namespace WinFormsPS5Project.Presentation
             _costPres = new CostPres();
             _costRepo = new CostRepo(pS5ProjContext);
             _costsService = new CostsService(pS5ProjContext, _costRepo, mapper);
+
+            GetAllCosts();
         }
 
         private void _closeBtn_Click(object sender, EventArgs e)
@@ -85,7 +87,7 @@ namespace WinFormsPS5Project.Presentation
             {
                 if(period == c.TimePeriod)
                 {
-                    _costTextBox.Text = c.Cost1.ToString() + Constant.RoublesInCostsForm;
+                    _costTextBox.Text = String.Format("{0:C}", c.Cost1).ToString();
                 }
             }
         }

@@ -100,13 +100,15 @@ namespace WinFormsPS5Project.Presentation
             {
                 if (g.GameName == _gameTextBox.Text)
                 {
-                    if (_genreTextBox.Text == null)
+                    if (_genreTextBox.Text == " ")
                     {
                         _genreTextBox.Text = Constant.GamesNullComboBox;
+                        this._genreTextBox.ForeColor = System.Drawing.Color.Gray;
                     }
-                    else if (_releaseDateTextBox.Text == null)
+                    if (_releaseDateTextBox.Text == " ")
                     {
                         _releaseDateTextBox.Text = Constant.GamesNullComboBox;
+                        this._releaseDateTextBox.ForeColor = System.Drawing.Color.Gray;
                     }
                     else
                     {

@@ -29,7 +29,5 @@ namespace WinFormsPS5Project.Presentation
 
         public const string FavoriteGame = "Любимая игра: ";
         public const string AddGameToFavorite = "Игра добавлена в избранное!";
-
-        public const string RoublesInCostsForm = "Рублей";
     }
 }

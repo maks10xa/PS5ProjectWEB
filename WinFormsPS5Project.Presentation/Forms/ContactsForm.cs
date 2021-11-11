@@ -29,7 +29,6 @@ namespace WinFormsPS5Project.Presentation
 
         private void FillFields()
         {
-            
         }
 
         private void _closeBtn_Click(object sender, EventArgs e)

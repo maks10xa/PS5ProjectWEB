@@ -63,6 +63,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             this._passwordField.Location = new System.Drawing.Point(283, 218);
             this._passwordField.Name = "_passwordField";
+            this._passwordField.PasswordChar = '*';
             this._passwordField.Size = new System.Drawing.Size(213, 27);
             this._passwordField.TabIndex = 11;
             // 

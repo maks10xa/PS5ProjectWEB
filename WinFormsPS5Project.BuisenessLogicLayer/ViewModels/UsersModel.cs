@@ -14,7 +14,7 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.ViewModels
         public string Pass { get; set; }
         public string UserName { get; set; }
         public bool AdminPs { get; set; }
-        public List<string> FavoriteGame { get; set; }
+        public string FavoriteGame { get; set; }
         public int? GameId { get; set; }
         public virtual Game Game { get; set; }
         public virtual ICollection<Contact> Contacts { get; set; }
