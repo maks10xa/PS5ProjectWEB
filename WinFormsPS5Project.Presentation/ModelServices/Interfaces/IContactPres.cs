@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 
-namespace WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces
+namespace WinFormsPS5Project.Presentation.ModelServices.Interfaces
 {
-    public interface IContactService
+    public class IContactPres
     {
-        ContactsModel GetAdmin(int id);
+        ContactsModel Contact {get; set;}
     }
 }
