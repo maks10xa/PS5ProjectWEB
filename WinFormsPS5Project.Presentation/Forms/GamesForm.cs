@@ -1,16 +1,8 @@
 ﻿using AutoMapper;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
-using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.Repositories;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
@@ -39,7 +31,6 @@ namespace WinFormsPS5Project.Presentation
             _games = new Games();
             _gameRepo = new GameRepo(pS5ProjContext);
             _userAccaunt = userAccaunt;
-            _userService = userService;
             _gameService = new GameService(pS5ProjContext, _gameRepo, mapper);
 
             GetAllGames();

@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using System;
 using System.Windows.Forms;
+using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
 using WinFormsPS5Project.DataAccessLayer.Models;
+using WinFormsPS5Project.DataAccessLayer.Repositories;
+using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
+using WinFormsPS5Project.Presentation.ModelServices;
 using WinFormsPS5Project.Presentation.ModelServices.Interfaces;
 
 namespace WinFormsPS5Project.Presentation
@@ -11,6 +15,9 @@ namespace WinFormsPS5Project.Presentation
     {
         private IMapper _mapper;
         private IUserAccaunt _userAccaunt;
+        private IContactRepo _contactRepo;
+        private IContactPres _contactPres;
+        private IContactService _contactService;
         private PS5ProjContext _pS5ProjContext;
         private IUserService _userService;
         
@@ -23,12 +30,20 @@ namespace WinFormsPS5Project.Presentation
             _pS5ProjContext = pS5ProjContext;
             _userAccaunt = userAccaunt;
             _userService = userService;
+            _contactPres = new ContactPres();
+            _contactRepo = new ContactRepo(pS5ProjContext);
+            _contactService = new ContactService(pS5ProjContext, _contactRepo, mapper);
 
             FillFields();
         }
 
         private void FillFields()
         {
+            var admin1 = _contactService.GetAdmin(1);
+            var admin2 = _contactService.GetAdmin(2);
+
+            _artemPhoneNumberTextBox.Text = admin1.PhoneNumber;
+            _maxPhoneNumberTextBox.Text = admin2.PhoneNumber;
         }
 
         private void _closeBtn_Click(object sender, EventArgs e)
