@@ -114,6 +114,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             // _listGamesComboBox
             // 
+            this._listGamesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._listGamesComboBox.FormattingEnabled = true;
             this._listGamesComboBox.Location = new System.Drawing.Point(157, 79);
             this._listGamesComboBox.Name = "_listGamesComboBox";
@@ -156,6 +157,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             this._gameTextBox.Location = new System.Drawing.Point(32, 209);
             this._gameTextBox.Name = "_gameTextBox";
+            this._gameTextBox.ReadOnly = true;
             this._gameTextBox.Size = new System.Drawing.Size(382, 27);
             this._gameTextBox.TabIndex = 15;
             this._gameTextBox.UseWaitCursor = true;
@@ -164,6 +166,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             this._genreTextBox.Location = new System.Drawing.Point(436, 209);
             this._genreTextBox.Name = "_genreTextBox";
+            this._genreTextBox.ReadOnly = true;
             this._genreTextBox.Size = new System.Drawing.Size(180, 27);
             this._genreTextBox.TabIndex = 16;
             this._genreTextBox.Text = " ";
@@ -173,6 +176,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             this._releaseDateTextBox.Location = new System.Drawing.Point(635, 209);
             this._releaseDateTextBox.Name = "_releaseDateTextBox";
+            this._releaseDateTextBox.ReadOnly = true;
             this._releaseDateTextBox.Size = new System.Drawing.Size(153, 27);
             this._releaseDateTextBox.TabIndex = 17;
             this._releaseDateTextBox.Text = " ";

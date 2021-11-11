@@ -92,6 +92,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             // _costsListCheckBox
             // 
+            this._costsListCheckBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this._costsListCheckBox.FormattingEnabled = true;
             this._costsListCheckBox.Location = new System.Drawing.Point(108, 103);
             this._costsListCheckBox.Name = "_costsListCheckBox";
@@ -103,6 +104,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             this._costTextBox.Location = new System.Drawing.Point(492, 103);
             this._costTextBox.Name = "_costTextBox";
+            this._costTextBox.ReadOnly = true;
             this._costTextBox.Size = new System.Drawing.Size(208, 27);
             this._costTextBox.TabIndex = 16;
             // 

@@ -117,6 +117,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             this._nameTxt.Location = new System.Drawing.Point(358, 78);
             this._nameTxt.Name = "_nameTxt";
+            this._nameTxt.ReadOnly = true;
             this._nameTxt.Size = new System.Drawing.Size(196, 27);
             this._nameTxt.TabIndex = 17;
             // 
@@ -124,6 +125,7 @@ namespace WinFormsPS5Project.Presentation
             // 
             this._loginTxt.Location = new System.Drawing.Point(358, 126);
             this._loginTxt.Name = "_loginTxt";
+            this._loginTxt.ReadOnly = true;
             this._loginTxt.Size = new System.Drawing.Size(196, 27);
             this._loginTxt.TabIndex = 18;
             // 
