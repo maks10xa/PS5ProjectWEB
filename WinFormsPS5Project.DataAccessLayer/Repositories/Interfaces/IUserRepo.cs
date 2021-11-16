@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsPS5Project.DataAccessLayer.Models;
+using WinFormsPS5Project.DataAccessLayer.ViewModels;
 
 namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
 {
     public interface IUserRepo
     {
-        void Add(User user);
+        void Add(UserModel user);
         User GetUserByLogin(string login, string password);
         bool IsUserConsistInDB(string login);
-        void AddFavoriteGame(User user, string game);
     }
 }

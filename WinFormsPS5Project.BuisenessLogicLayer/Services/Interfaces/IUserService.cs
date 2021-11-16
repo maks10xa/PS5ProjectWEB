@@ -12,6 +12,5 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces
         void Add(UsersModel user);
         UsersModel GetUserByLogin(string login, string password);
         bool IsUserConsistInDB(string login);
-        void AddFavoriteGame(UsersModel user, string game);
     }
 }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 using WinFormsPS5Project.DataAccessLayer.Models;
+using WinFormsPS5Project.DataAccessLayer.Repositories;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
 
 namespace WinFormsPS5Project.BuisenessLogicLayer.Services
@@ -17,10 +18,10 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
         private ICostRepo _costRepo;
         private IMapper _mapper;
 
-        public CostsService(PS5ProjContext pS5ProjContext, ICostRepo costRepo, IMapper mapper)
+        public CostsService(IMapper mapper)
         {
-            _pS5ProjContext = pS5ProjContext;
-            _costRepo = costRepo;
+            _pS5ProjContext = new PS5ProjContext();
+            _costRepo = new CostRepo(_pS5ProjContext);
             _mapper = mapper;
         }
 

@@ -1,31 +1,36 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
+using WinFormsPS5Project.DataAccessLayer.ViewModels;
 
 namespace WinFormsPS5Project.DataAccessLayer.Repositories
 {
     public class UserRepo : IUserRepo
     {
         private PS5ProjContext _pS5ProjContext;
+        private IMapper _mapper;
 
-        public UserRepo(PS5ProjContext pS5ProjContext)
+        public UserRepo(IMapper mapper)
         {
-            _pS5ProjContext = pS5ProjContext;
+            _pS5ProjContext = new PS5ProjContext();
+            _mapper = mapper;
         }
 
-        public void Add(User user)
+        public void Add(UserModel userModel)
         {
-            User user1 = new User()
+            User user = new User()
             {
-                UserLogin = user.UserLogin,
-                Pass = user.Pass,
-                UserName = user.UserName
+                UserLogin = userModel.UserLogin,
+                Pass = userModel.Pass,
+                UserName = userModel.UserName
             };
-            _pS5ProjContext.Users.Add(user1);
+
+            _pS5ProjContext.Users.Add(user);
         }
 
         public User GetUserByLogin(string login, string password)
@@ -40,13 +45,6 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             var isUser = _pS5ProjContext.Users.Any(u => u.UserLogin == login);
 
             return isUser;
-        }
-
-        public void AddFavoriteGame(User user, string game)
-        {
-            var user1 = _pS5ProjContext.Users.FirstOrDefault(u => u.UserLogin == user.UserLogin);
-
-            user1.FavoriteGame = game;
         }
     }
 }

@@ -9,6 +9,7 @@ using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.Repositories;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
+using WinFormsPS5Project.DataAccessLayer.ViewModels;
 
 namespace WinFormsPS5Project.BuisenessLogicLayer.Services
 {
@@ -18,45 +19,36 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
         private IUserRepo _userRepo;
         private IMapper _mapper;
 
-        public UserService(PS5ProjContext pS5ProjContext, IUserRepo userRepo, IMapper mapper)
+        public UserService(IMapper mapper)
         {
-            _pS5ProjContext = pS5ProjContext;
-            _userRepo = userRepo;
+            _pS5ProjContext =  new PS5ProjContext();
             _mapper = mapper;
+            _userRepo = new UserRepo(mapper);
         }
 
-        public void Add(UsersModel user)
+        public void Add(UsersModel userModel)
         {
-            var user1 = _mapper.Map<User>(user);
+            var user = _mapper.Map<UserModel>(userModel);
 
-            _userRepo.Add(user1);
+            _userRepo.Add(user);
             _pS5ProjContext.SaveChanges();
         }
 
         public UsersModel GetUserByLogin(string login, string password)
         {
             var user = _userRepo.GetUserByLogin(login, password);
-            var user1 = _mapper.Map<UsersModel>(user);
+            var db = _mapper.Map<UsersModel>(user);
 
-            return user1;
+            return db;
         }
 
         public bool IsUserConsistInDB(string login)
         {
-            var user = _userRepo.IsUserConsistInDB(login);
+            var db = _userRepo.IsUserConsistInDB(login);
 
-            var user1 = _mapper.Map<bool>(user);
+            var user = _mapper.Map<bool>(db);
 
-            return user1;
-        }
-
-        public void AddFavoriteGame(UsersModel user, string game)
-        {
-            var u = _mapper.Map<User>(user);
-
-            _userRepo.AddFavoriteGame(u, game);
-
-            _pS5ProjContext.SaveChanges();
+            return user;
         }
     }
 }

@@ -15,23 +15,19 @@ namespace WinFormsPS5Project.Presentation
     {
         private IMapper _mapper;
         private IUserAccaunt _userAccaunt;
-        private IGameRepo _gameRepo;
         private IGames _games;
         private IGameService _gameService;
         private IUserService _userService;
-        private PS5ProjContext _pS5ProjContext;
 
-        public GamesForm(IUserAccaunt userAccaunt, IUserService userService, IMapper mapper, PS5ProjContext pS5ProjContext)
+        public GamesForm(IUserAccaunt userAccaunt, IMapper mapper)
         {
             InitializeComponent();
 
             _mapper = mapper;
-            _pS5ProjContext = pS5ProjContext;
-            _userService = userService;
+            _userService = new UserService(mapper);
             _games = new Games();
-            _gameRepo = new GameRepo(pS5ProjContext);
             _userAccaunt = userAccaunt;
-            _gameService = new GameService(pS5ProjContext, _gameRepo, mapper);
+            _gameService = new GameService(mapper);
 
             GetAllGames();
         }
@@ -44,35 +40,33 @@ namespace WinFormsPS5Project.Presentation
         private void _profileBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu menuForm = new Menu(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+            Menu menuForm = new Menu(_userAccaunt, _mapper);
             menuForm.Show();
         }
 
         private void _costsBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CostsForm costsForm = new CostsForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+            CostsForm costsForm = new CostsForm(_userAccaunt, _mapper);
             costsForm.Show();
         }
 
         private void _infoBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            InfoForm infoForm = new InfoForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+            InfoForm infoForm = new InfoForm(_userAccaunt, _mapper);
             infoForm.Show();
         }
 
         private void _contactsBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ContactsForm contactsForm = new ContactsForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+            ContactsForm contactsForm = new ContactsForm(_userAccaunt, _mapper);
             contactsForm.Show();
         }
 
         private void _addToFavouriteBtn_Click(object sender, EventArgs e)
         {
-            _userService.AddFavoriteGame(_userAccaunt.User, _gameTextBox.Text);
-
             if(_userAccaunt.User.FavoriteGame != null)
             {
                 MessageBox.Show(Constant.AddGameToFavorite, Constant.OK, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -80,6 +74,7 @@ namespace WinFormsPS5Project.Presentation
             else
             {
                 MessageBox.Show(Constant.RegistrationError, Constant.RegistrationError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
         }
 

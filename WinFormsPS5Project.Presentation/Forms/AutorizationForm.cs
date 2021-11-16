@@ -20,9 +20,7 @@ namespace WinFormsPS5Project.Presentation
 {
     public partial class AutorizationForm : Form
     {
-        private PS5ProjContext _pS5ProjContext;
         private IMapper _mapper;
-        private IUserRepo _user;
         private IUserAccaunt _userAccaunt;
         private IUserService _userService;
 
@@ -32,16 +30,14 @@ namespace WinFormsPS5Project.Presentation
             var config = new AutoMapper.MapperConfiguration(c => c.AddProfile(new MapperProfile()));
             _mapper = config.CreateMapper();
 
-            _pS5ProjContext = new PS5ProjContext();
             _userAccaunt = new UserAccount();
-            _user = new UserRepo(_pS5ProjContext);
-            _userService = new UserService(_pS5ProjContext, _user, _mapper);
+            _userService = new UserService(_mapper);
         }
 
         private void _goToRegistration_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RegistrationForm registrationForm = new RegistrationForm(_userAccaunt, _pS5ProjContext, _user, _mapper);
+            RegistrationForm registrationForm = new RegistrationForm(_mapper);
             registrationForm.Show();
         }
 
@@ -76,7 +72,7 @@ namespace WinFormsPS5Project.Presentation
             {
                 _userAccaunt.User = _userService.GetUserByLogin(loginUser, passUser);
                 this.Hide();
-                Menu menuForm = new Menu(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+                Menu menuForm = new Menu(_userAccaunt, _mapper);
                 menuForm.Show();
             }
             else

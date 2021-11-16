@@ -131,12 +131,12 @@ namespace WinFormsPS5Project.Presentation
             // 
             // _gamesListTxt
             // 
-            this._gamesListTxt.Location = new System.Drawing.Point(358, 186);
+            this._gamesListTxt.Location = new System.Drawing.Point(358, 180);
             this._gamesListTxt.Multiline = true;
             this._gamesListTxt.Name = "_gamesListTxt";
             this._gamesListTxt.ReadOnly = true;
             this._gamesListTxt.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this._gamesListTxt.Size = new System.Drawing.Size(413, 146);
+            this._gamesListTxt.Size = new System.Drawing.Size(413, 152);
             this._gamesListTxt.TabIndex = 19;
             // 
             // Menu

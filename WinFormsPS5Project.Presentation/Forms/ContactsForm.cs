@@ -15,24 +15,18 @@ namespace WinFormsPS5Project.Presentation
     {
         private IMapper _mapper;
         private IUserAccaunt _userAccaunt;
-        private IContactRepo _contactRepo;
         private IContactPres _contactPres;
         private IContactService _contactService;
-        private PS5ProjContext _pS5ProjContext;
-        private IUserService _userService;
         
 
-        public ContactsForm(IUserAccaunt userAccaunt, IUserService userService, IMapper mapper, PS5ProjContext pS5ProjContext)
+        public ContactsForm(IUserAccaunt userAccaunt, IMapper mapper)
         {
             InitializeComponent();
 
             _mapper = mapper;
-            _pS5ProjContext = pS5ProjContext;
             _userAccaunt = userAccaunt;
-            _userService = userService;
             _contactPres = new ContactPres();
-            _contactRepo = new ContactRepo(pS5ProjContext);
-            _contactService = new ContactService(pS5ProjContext, _contactRepo, mapper);
+            _contactService = new ContactService(mapper);
 
             FillFields();
         }
@@ -54,28 +48,28 @@ namespace WinFormsPS5Project.Presentation
         private void _infoBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            InfoForm infoForm = new InfoForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+            InfoForm infoForm = new InfoForm(_userAccaunt, _mapper);
             infoForm.Show();
         }
 
         private void _costsBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            CostsForm costsForm = new CostsForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+            CostsForm costsForm = new CostsForm(_userAccaunt, _mapper);
             costsForm.Show();
         }
 
         private void _gamesBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            GamesForm gamesForm = new GamesForm(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+            GamesForm gamesForm = new GamesForm(_userAccaunt, _mapper);
             gamesForm.Show();
         }
 
         private void _profileBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Menu menuForm = new Menu(_userAccaunt, _userService, _mapper, _pS5ProjContext);
+            Menu menuForm = new Menu(_userAccaunt, _mapper);
             menuForm.Show();
         }
 

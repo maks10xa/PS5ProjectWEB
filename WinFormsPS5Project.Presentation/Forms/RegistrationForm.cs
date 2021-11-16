@@ -20,21 +20,13 @@ namespace WinFormsPS5Project.Presentation
 {
     public partial class RegistrationForm : Form
     {
-        private PS5ProjContext _pS5ProjContext;
-        private IUserAccaunt _userAccaunt;
-        private IUserRepo _user;
         private IMapper _mapper;
 
-
-        public RegistrationForm(IUserAccaunt userAccaunt, PS5ProjContext pS5ProjContext, IUserRepo user, IMapper mapper)
+        public RegistrationForm(IMapper mapper)
         {
             InitializeComponent();
 
-            _userAccaunt = userAccaunt;
-            _pS5ProjContext = pS5ProjContext;
-            _user = user;
             _mapper = mapper;
-
         }
 
         private void _closeBtn_Click(object sender, EventArgs e)
@@ -44,7 +36,7 @@ namespace WinFormsPS5Project.Presentation
 
         private void _registerBtn_Click(object sender, EventArgs e)
         {
-            var userService = new UserService(_pS5ProjContext, _user, _mapper);
+            var userService = new UserService(_mapper);
 
             var login = _loginFIeld.Text;
             var pass = _passwordField.Text;
@@ -53,11 +45,15 @@ namespace WinFormsPS5Project.Presentation
             if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(pass))
             {
                 MessageBox.Show(Constant.EmptyLoginPass, Constant.RegistrationError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
             }
 
             else if(string.IsNullOrEmpty(name))
             {
                 MessageBox.Show(Constant.EmptyNameField, Constant.RegistrationError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
             }
 
             var isUserConsistInDb = userService.IsUserConsistInDB(login);
@@ -69,8 +65,7 @@ namespace WinFormsPS5Project.Presentation
                     UserLogin = login,
                     Pass = pass,
                     UserName = name,
-                    FavoriteGame = null,
-                    Contacts = null
+                    FavoriteGame = null
                 };
 
                 userService.Add(user);
@@ -84,6 +79,8 @@ namespace WinFormsPS5Project.Presentation
             else
             {
                 MessageBox.Show(Constant.EmptyNameField, Constant.NotCorrectLogin, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
             }
         }
     }
