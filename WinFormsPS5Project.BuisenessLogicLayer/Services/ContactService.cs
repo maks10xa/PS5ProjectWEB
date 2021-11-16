@@ -28,9 +28,9 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
         public ContactsModel GetAdmin(int id)
         {
             var cont = _contactRepo.GetAdmin(id);
-            var cont1 = _mapper.Map<ContactsModel>(cont);
+            var contModel = _mapper.Map<ContactsModel>(cont);
 
-            return cont1;
+            return contModel;
         }
     }
 }

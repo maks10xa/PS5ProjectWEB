@@ -10,6 +10,6 @@ namespace WinFormsPS5Project.DataAccessLayer.ViewModels
     {
         public int Id { get; set; }
         public string TimePeriod { get; set; }
-        public decimal Cost1 { get; set; }
+        public decimal CostOfPeriod { get; set; }
     }
 }

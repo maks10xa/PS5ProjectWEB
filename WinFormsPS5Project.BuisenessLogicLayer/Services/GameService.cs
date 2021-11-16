@@ -36,9 +36,9 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
         {
             var game = _gameRepo.GetGameByName(name);
 
-            var game1 = _mapper.Map<GamesModel>(game);
+            var gameModel = _mapper.Map<GamesModel>(game);
 
-            return game1;
+            return gameModel;
         }
     }
 }

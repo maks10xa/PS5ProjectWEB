@@ -74,7 +74,7 @@ namespace WinFormsPS5Project.Presentation
             else
             {
                 MessageBox.Show(Constant.RegistrationError, Constant.RegistrationError, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                
             }
         }
 

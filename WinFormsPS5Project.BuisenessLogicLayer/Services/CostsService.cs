@@ -28,8 +28,8 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
         public CostsModel GetCostById(int id)
         {
             var cost = _costRepo.GetCostById(id);
-            var cost1 = _mapper.Map<CostsModel>(cost);
-            return cost1;
+            var costModel = _mapper.Map<CostsModel>(cost);
+            return costModel;
         }
 
         public List<CostsModel> GetAllCosts()
