@@ -54,7 +54,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
 
             modelBuilder.Entity<Cost>(entity =>
             {
-                entity.Property(e => e.Cost1)
+                entity.Property(e => e.CostOfPeriod)
                     .HasColumnType("money")
                     .HasColumnName("Cost");
 

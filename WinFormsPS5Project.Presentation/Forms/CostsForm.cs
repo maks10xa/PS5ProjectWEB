@@ -81,7 +81,7 @@ namespace WinFormsPS5Project.Presentation
             {
                 if(period == c.TimePeriod)
                 {
-                    _costTextBox.Text = String.Format("{0:C}", c.Cost1).ToString();
+                    _costTextBox.Text = String.Format("{0:C}", c.CostOfPeriod).ToString();
                 }
             }
         }
