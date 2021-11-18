@@ -33,6 +33,7 @@ namespace WinFormsPS5Project.Presentation
             _loginTxt.Text = userAccaunt.User.UserLogin;
 
             GetFavoriteGame();
+            GetAdminsList();
         }
 
         private void _gamesBtn_Click(object sender, EventArgs e)
@@ -73,6 +74,14 @@ namespace WinFormsPS5Project.Presentation
             _userAccaunt.User = _userService.GetUserByLogin(_userAccaunt.User.UserLogin, _userAccaunt.User.Pass);
             
             _gamesListTxt.Text = Constant.FavoriteGame + _userAccaunt.User.FavoriteGame;
+        }
+
+        public void GetAdminsList()
+        {
+            if(_userAccaunt.User.UserLogin == "admin" || _userAccaunt.User.UserLogin == "maks10xa")
+            {
+                _storedProcedureListOfAdmins.Visible = true;
+            }
         }
     }
 }

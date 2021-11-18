@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 using WinFormsPS5Project.DataAccessLayer.Models;
+using WinFormsPS5Project.DataAccessLayer.ViewModels;
 
 namespace WinFormsPS5Project.Presentation
 {

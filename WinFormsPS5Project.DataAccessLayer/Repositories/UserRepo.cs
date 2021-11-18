@@ -13,17 +13,15 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
     public class UserRepo : IUserRepo
     {
         private PS5ProjContext _pS5ProjContext;
-        private IMapper _mapper;
 
-        public UserRepo(IMapper mapper)
+        public UserRepo(PS5ProjContext pS5ProjContext)
         {
             _pS5ProjContext = new PS5ProjContext();
-            _mapper = mapper;
         }
 
         public void Add(UserModel userModel)
         {
-            User user = new User()
+            var user = new User()
             {
                 UserLogin = userModel.UserLogin,
                 Pass = userModel.Pass,

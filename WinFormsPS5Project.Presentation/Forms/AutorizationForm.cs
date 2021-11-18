@@ -64,6 +64,8 @@ namespace WinFormsPS5Project.Presentation
             if (string.IsNullOrEmpty(loginUser) || string.IsNullOrEmpty(passUser))
             {
                 MessageBox.Show(Constant.EmptyLoginPass, Constant.AuthorizedError, MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
             }
 
             var isUserConsistInDb = _userService.IsUserConsistInDB(loginUser);

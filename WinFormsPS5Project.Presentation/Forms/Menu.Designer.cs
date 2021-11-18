@@ -39,6 +39,7 @@ namespace WinFormsPS5Project.Presentation
             this._nameTxt = new System.Windows.Forms.TextBox();
             this._loginTxt = new System.Windows.Forms.TextBox();
             this._gamesListTxt = new System.Windows.Forms.TextBox();
+            this._storedProcedureListOfAdmins = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this._profilePhoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -139,11 +140,25 @@ namespace WinFormsPS5Project.Presentation
             this._gamesListTxt.Size = new System.Drawing.Size(413, 152);
             this._gamesListTxt.TabIndex = 19;
             // 
+            // _storedProcedureListOfAdmins
+            // 
+            this._storedProcedureListOfAdmins.BackColor = System.Drawing.SystemColors.Info;
+            this._storedProcedureListOfAdmins.Font = new System.Drawing.Font("Century Schoolbook", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this._storedProcedureListOfAdmins.ForeColor = System.Drawing.Color.ForestGreen;
+            this._storedProcedureListOfAdmins.FormattingEnabled = true;
+            this._storedProcedureListOfAdmins.Location = new System.Drawing.Point(620, 77);
+            this._storedProcedureListOfAdmins.Name = "_storedProcedureListOfAdmins";
+            this._storedProcedureListOfAdmins.Size = new System.Drawing.Size(151, 26);
+            this._storedProcedureListOfAdmins.TabIndex = 20;
+            this._storedProcedureListOfAdmins.Text = "Список админов";
+            this._storedProcedureListOfAdmins.Visible = false;
+            // 
             // Menu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this._storedProcedureListOfAdmins);
             this.Controls.Add(this._gamesListTxt);
             this.Controls.Add(this._loginTxt);
             this.Controls.Add(this._nameTxt);
@@ -175,5 +190,6 @@ namespace WinFormsPS5Project.Presentation
         private System.Windows.Forms.TextBox _nameTxt;
         private System.Windows.Forms.TextBox _loginTxt;
         private System.Windows.Forms.TextBox _gamesListTxt;
+        private System.Windows.Forms.ComboBox _storedProcedureListOfAdmins;
     }
 }

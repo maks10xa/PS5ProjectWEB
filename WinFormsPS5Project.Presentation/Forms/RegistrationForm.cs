@@ -78,7 +78,7 @@ namespace WinFormsPS5Project.Presentation
             }
             else
             {
-                MessageBox.Show(Constant.EmptyNameField, Constant.NotCorrectLogin, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Constant.NotCorrectLogin, Constant.RegistrationError, MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return;
             }
