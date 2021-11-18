@@ -19,7 +19,9 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
         public bool AdminPs { get; set; }
         public string FavoriteGame { get; set; }
         public int? GameId { get; set; }
+        public int? ContactsId { get; set; }
 
+        public virtual Contact ContactsNavigation { get; set; }
         public virtual Game Game { get; set; }
         public virtual ICollection<Contact> Contacts { get; set; }
     }

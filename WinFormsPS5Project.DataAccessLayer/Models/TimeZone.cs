@@ -5,10 +5,10 @@ using System.Collections.Generic;
 
 namespace WinFormsPS5Project.DataAccessLayer.Models
 {
-    public partial class Cost
+    public partial class TimeZone
     {
         public int Id { get; set; }
-        public string TimePeriod { get; set; }
-        public decimal? CostOfPeriod { get; set; }
+        public string TimeZoneName { get; set; }
+        public DateTime TimeOfTimeZone { get; set; }
     }
 }
