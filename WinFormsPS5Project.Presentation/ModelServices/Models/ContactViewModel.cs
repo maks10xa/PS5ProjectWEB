@@ -1,6 +1,6 @@
-﻿namespace WinFormsPS5Project.BuisenessLogicLayer.ViewModels
+﻿namespace WinFormsPS5Project.Presentation.ModelServices.Models
 {
-    public class ContactsModel
+    public class ContactViewModel
     {
         public int Id { get; set; }
         public string AdminName { get; set; }

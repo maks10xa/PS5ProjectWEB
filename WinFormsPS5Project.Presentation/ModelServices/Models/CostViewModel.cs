@@ -1,6 +1,6 @@
-﻿namespace WinFormsPS5Project.DataAccessLayer.ViewModels
+﻿namespace WinFormsPS5Project.Presentation.ModelServices.Models
 {
-    public class CostModel
+    public class CostViewModel
     {
         public int Id { get; set; }
         public string TimePeriod { get; set; }

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WinFormsPS5Project.Presentation
+﻿namespace WinFormsPS5Project.Presentation
 {
     public class Constant
     {
@@ -29,5 +23,6 @@ namespace WinFormsPS5Project.Presentation
 
         public const string FavoriteGame = "Любимая игра: ";
         public const string AddGameToFavorite = "Игра добавлена в избранное!";
+        public const string Error = "Error!!!";
     }
 }

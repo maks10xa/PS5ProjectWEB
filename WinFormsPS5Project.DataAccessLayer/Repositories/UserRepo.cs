@@ -1,9 +1,4 @@
-﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
 using WinFormsPS5Project.DataAccessLayer.ViewModels;

@@ -1,6 +1,6 @@
-﻿namespace WinFormsPS5Project.BuisenessLogicLayer.ViewModels
+﻿namespace WinFormsPS5Project.Presentation.ModelServices.Models
 {
-    public class UsersModel
+    public class UserViewModel
     {
         public int Id { get; set; }
         public string UserLogin { get; set; }

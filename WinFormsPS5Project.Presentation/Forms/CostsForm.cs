@@ -3,9 +3,6 @@ using System;
 using System.Windows.Forms;
 using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
-using WinFormsPS5Project.DataAccessLayer.Models;
-using WinFormsPS5Project.DataAccessLayer.Repositories;
-using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
 using WinFormsPS5Project.Presentation.ModelServices;
 using WinFormsPS5Project.Presentation.ModelServices.Interfaces;
 

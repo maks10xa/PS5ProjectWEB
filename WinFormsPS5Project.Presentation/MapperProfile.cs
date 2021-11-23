@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
-using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.ViewModels;
+using WinFormsPS5Project.Presentation.ModelServices.Models;
 
 namespace WinFormsPS5Project.Presentation
 {
@@ -14,10 +9,14 @@ namespace WinFormsPS5Project.Presentation
     {
         public MapperProfile()
         {
-            CreateMap<UsersModel, User>().ReverseMap();
-            CreateMap<GamesModel, Game>().ReverseMap();
-            CreateMap<ContactsModel, Contact>().ReverseMap();
-            CreateMap<CostsModel, Cost>().ReverseMap();
+            CreateMap<UsersModel, UserModel>().ReverseMap();
+            CreateMap<UserViewModel, UsersModel>().ReverseMap();
+            CreateMap<GamesModel, GameModel>().ReverseMap();
+            CreateMap<GameViewModel, GamesModel>().ReverseMap();
+            CreateMap<ContactsModel, ContactModel>().ReverseMap();
+            CreateMap<ContactViewModel, ContactsModel>().ReverseMap();
+            CreateMap<CostsModel, CostModel>().ReverseMap();
+            CreateMap<CostViewModel, CostsModel>().ReverseMap();
         }
     }
 }
