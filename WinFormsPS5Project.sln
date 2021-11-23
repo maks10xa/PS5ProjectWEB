@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsPS5Project.DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsPS5Project.BuisenessLogicLayer", "WinFormsPS5Project.BuisenessLogicLayer\WinFormsPS5Project.BuisenessLogicLayer.csproj", "{CD11353B-4CCA-4381-AE7E-7ED931119733}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS5Project.Web.MVC", "PS5Project.Web.MVC\PS5Project.Web.MVC.csproj", "{6F866D1B-5825-4EC1-BB7B-419681F8AB1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CD11353B-4CCA-4381-AE7E-7ED931119733}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD11353B-4CCA-4381-AE7E-7ED931119733}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD11353B-4CCA-4381-AE7E-7ED931119733}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F866D1B-5825-4EC1-BB7B-419681F8AB1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F866D1B-5825-4EC1-BB7B-419681F8AB1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F866D1B-5825-4EC1-BB7B-419681F8AB1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F866D1B-5825-4EC1-BB7B-419681F8AB1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
