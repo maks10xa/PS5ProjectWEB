@@ -104,7 +104,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.AdminPs).HasColumnName("AdminPS");
+                entity.Property(e => e.IsAdminPs).HasColumnName("AdminPS");
 
                 entity.Property(e => e.FavoriteGame).HasMaxLength(64);
 

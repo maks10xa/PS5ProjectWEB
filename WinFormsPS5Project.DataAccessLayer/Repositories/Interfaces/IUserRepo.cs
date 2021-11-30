@@ -6,7 +6,9 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
     public interface IUserRepo
     {
         void Add(UserModel user);
-        User GetUserByLogin(string login, string password);
+        UserModel GetUserByLogin(string login, string password);
         bool IsUserConsistInDB(string login);
+        void SetFavoriteGame(UserModel userModel, string favoriteGame);
+        bool DoesUserIsAdmin(string login);
     }
 }

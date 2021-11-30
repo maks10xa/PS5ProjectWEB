@@ -69,10 +69,12 @@ namespace WinFormsPS5Project.Presentation
 
         public void GetAdminsList()
         {
-            if(_userAccaunt.User.UserLogin == "admin" || _userAccaunt.User.UserLogin == "maks10xa")
+            if(_userService.DoesUserIsAdmin(_userAccaunt.User.UserLogin))
             {
                 _storedProcedureListOfAdmins.Visible = true;
             }
+
+
         }
     }
 }

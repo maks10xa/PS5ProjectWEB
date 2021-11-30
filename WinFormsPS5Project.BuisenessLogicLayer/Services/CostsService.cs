@@ -30,9 +30,10 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
 
         public List<CostsModel> GetAllCosts()
         {
-            var costs = _mapper.Map<List<CostsModel>>(_costRepo.GetAllCosts());
+            var costs = _costRepo.GetAllCosts();
+            var mapped = _mapper.Map<List<CostsModel>>(costs);
 
-            return costs;
+            return mapped;
         }
     }
 }

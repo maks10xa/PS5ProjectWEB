@@ -3,6 +3,7 @@ using System;
 using System.Windows.Forms;
 using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
+using WinFormsPS5Project.Presentation.ModelServices.Models;
 
 namespace WinFormsPS5Project.Presentation
 {
@@ -46,7 +47,7 @@ namespace WinFormsPS5Project.Presentation
 
             var isUserConsistInDb = userService.IsUserConsistInDB(login);
 
-            if(!isUserConsistInDb)
+            if (!isUserConsistInDb)
             {
                 var user = new UsersModel()
                 {

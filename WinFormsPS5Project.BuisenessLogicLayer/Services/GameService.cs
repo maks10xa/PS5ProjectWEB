@@ -23,9 +23,14 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
 
         public List<GamesModel> GetAllGames()
         {
-            var games = _mapper.Map<List<GamesModel>>(_gameRepo.GetAllGames());
+            //var games = _mapper.Map<List<GamesModel>>(_gameRepo.GetAllGames());
 
-            return games;
+            //return games;
+
+            var games = _gameRepo.GetAllGames();
+            var mapped = _mapper.Map<List<GamesModel>>(games);
+
+            return mapped;
         }
 
         public GamesModel GetGameByName(string name)

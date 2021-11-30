@@ -64,14 +64,14 @@ namespace WinFormsPS5Project.Presentation
 
         private void _addToFavouriteBtn_Click(object sender, EventArgs e)
         {
-            if(_userAccaunt.User.FavoriteGame != null)
+            if (_gameTextBox.Text != null)
             {
+                _userService.SetFavoriteGame(_userAccaunt.User, _gameTextBox.Text);
                 MessageBox.Show(Constant.AddGameToFavorite, Constant.OK, MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show(Constant.Error, Constant.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+                MessageBox.Show(Constant.Error, Constant.Error, MessageBoxButtons.OK, MessageBoxIcon.Error);   
             }
         }
 

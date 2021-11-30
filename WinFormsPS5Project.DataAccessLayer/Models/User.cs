@@ -15,7 +15,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
         public string UserLogin { get; set; }
         public string Pass { get; set; }
         public string UserName { get; set; }
-        public bool AdminPs { get; set; }
+        public bool IsAdminPs { get; set; }
         public string FavoriteGame { get; set; }
         public int? GameId { get; set; }
         public int? ContactsId { get; set; }

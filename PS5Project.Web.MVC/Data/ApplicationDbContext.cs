@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace PS5Project.Web.MVC.Data
 {
@@ -12,5 +9,6 @@ namespace PS5Project.Web.MVC.Data
             : base(options)
         {
         }
+
     }
 }

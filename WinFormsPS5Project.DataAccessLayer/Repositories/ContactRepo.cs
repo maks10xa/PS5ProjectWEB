@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
+using WinFormsPS5Project.DataAccessLayer.ViewModels;
 
 namespace WinFormsPS5Project.DataAccessLayer.Repositories
 {
@@ -13,9 +14,14 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             _pS5ProjContext = pS5ProjContext;
         }
 
-        public Contact GetAdmin(int id)
+        public ContactModel GetAdmin(int id)
         {
-            var cont = _pS5ProjContext.Contacts.FirstOrDefault(c => c.UserId == id);
+            var cont = _pS5ProjContext.Contacts.Select(c => new ContactModel()
+            {
+                Id = c.Id,
+                AdminName = c.AdminName,
+                PhoneNumber = c.PhoneNumber
+            }).FirstOrDefault();
 
             return cont;
         }

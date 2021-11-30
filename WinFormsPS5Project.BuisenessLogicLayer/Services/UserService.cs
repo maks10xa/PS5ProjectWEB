@@ -41,9 +41,24 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
         {
             var db = _userRepo.IsUserConsistInDB(login);
 
-            var user = _mapper.Map<bool>(db);
+            //var user = _mapper.Map<bool>(db);
 
-            return user;
+            return db;
+        }
+
+        public bool DoesUserIsAdmin(string login)
+        {
+            var db = _userRepo.DoesUserIsAdmin(login);
+
+            return db;
+        }
+
+        public void SetFavoriteGame(UsersModel userModel, string favoriteGame)
+        {
+            var user = _mapper.Map<UserModel>(userModel);
+
+            _userRepo.SetFavoriteGame(user, favoriteGame);
+            _pS5ProjContext.SaveChanges();
         }
     }
 }
