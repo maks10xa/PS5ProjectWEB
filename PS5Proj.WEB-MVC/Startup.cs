@@ -1,14 +1,17 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using WinFormsPS5Project.BuisenessLogicLayer.Services;
+using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
+using WinFormsPS5Project.DataAccessLayer.Models;
+using WinFormsPS5Project.DataAccessLayer.Repositories;
+using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
 
 namespace PS5Proj.WEB_MVC
 {
@@ -24,8 +27,35 @@ namespace PS5Proj.WEB_MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            Configuration.Bind("Project", new Config());
+
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<PS5ProjContext>(options => options.UseSqlServer(connection));
+
             services.AddControllersWithViews()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
+
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IGameService, GameService>();
+            services.AddScoped<ICostsService, CostsService>();
+            services.AddScoped<IContactService, ContactService>();
+
+            services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IGameRepo, GameRepo>();
+            services.AddScoped<ICostRepo, CostRepo>();
+            services.AddScoped<IContactRepo, ContactRepo>();
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddIdentity<IdentityUser, IdentityRole>(opts =>
+            {
+                opts.User.RequireUniqueEmail = true;
+                opts.Password.RequiredLength = 6;
+                opts.Password.RequireNonAlphanumeric = false;
+                opts.Password.RequireUppercase = false;
+                opts.Password.RequireLowercase = false;
+                opts.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<PS5ProjContext>().AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
