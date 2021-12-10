@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
@@ -27,6 +29,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
                 optionsBuilder.UseSqlServer("Server=localhost;Database=PS5Proj;Trusted_Connection=True;");
             }
         }
@@ -71,6 +74,11 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
                     .IsRequired()
                     .HasMaxLength(64);
 
+                entity.Property(e => e.Img)
+                    .HasMaxLength(8000)
+                    .IsUnicode(false)
+                    .HasDefaultValueSql("('https://ps5-gm.by/wp-content/uploads/2021/07/c8dbee16-42a4-41fe-91c4-b6b269c5288e.jpg')");
+
                 entity.Property(e => e.ReleaseDate).HasColumnType("date");
             });
 
@@ -103,7 +111,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
 
             modelBuilder.Entity<User>(entity =>
             {
-                entity.Property(e => e.IsAdminPs).HasColumnName("AdminPS");
+                entity.Property(e => e.AdminPs).HasColumnName("AdminPS");
 
                 entity.Property(e => e.FavoriteGame).HasMaxLength(64);
 

@@ -1,4 +1,7 @@
-﻿#nullable disable
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
 
 namespace WinFormsPS5Project.DataAccessLayer.Models
 {

@@ -41,5 +41,12 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             return game;
         }
 
+        public void SetImgRef(GameModel gameModel, string img)
+        {
+            var game = _pS5ProjContext.Games.FirstOrDefault(i => i.Id == gameModel.Id);
+            game.Img = img;
+        }
+
+
     }
 }

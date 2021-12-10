@@ -16,6 +16,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
         public string GameName { get; set; }
         public string GameGenre { get; set; }
         public DateTime? ReleaseDate { get; set; }
+        public string Img { get; set; }
 
         public virtual ICollection<User> Users { get; set; }
     }
