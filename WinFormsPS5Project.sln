@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsPS5Project.DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsPS5Project.BuisenessLogicLayer", "WinFormsPS5Project.BuisenessLogicLayer\WinFormsPS5Project.BuisenessLogicLayer.csproj", "{CD11353B-4CCA-4381-AE7E-7ED931119733}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PS5Proj.WEB-MVC", "PS5Proj.WEB-MVC\PS5Proj.WEB-MVC.csproj", "{CB5523D2-ADBF-4A03-ACF2-6D97119A9EB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PS5Proj.WEB-MVC", "PS5Proj.WEB-MVC\PS5Proj.WEB-MVC.csproj", "{CB5523D2-ADBF-4A03-ACF2-6D97119A9EB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

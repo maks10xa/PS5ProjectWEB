@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
@@ -26,7 +28,15 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             _pS5ProjContext.Users.Add(user);
         }
 
-        public UserModel GetUserByLogin(string login, string password)
+        public List<UserModel> GetAllUsers()
+        {
+            var users = _pS5ProjContext.Users.ToList();
+            var mapped = _mapper.Map<List<UserModel>>(users);
+
+            return mapped;
+        }
+
+        public UserModel GetUserByLogin(string login)
         {
             var us = _pS5ProjContext.Users.Select(u => new UserModel()
             {
@@ -41,7 +51,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
           return us;
           }
 
-        public bool IsUserConsistInDB(string login)
+        public bool DoesUserExistInDb(string login)
         {
             var isUser = _pS5ProjContext.Users.Any(u => u.UserLogin == login);
 
@@ -72,16 +82,12 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             _pS5ProjContext.Users.Update(mapped);
         }
 
-      /*  public void GetAllAdmins()
+        /*public List<UserModel> GetAllAdmins()
         {
-            using (var db = new PS5ProjContext())
-            {
-                var isAdminParametr = new SqlParameter("@IsAdminPS", 1);
+            var adminsList = _pS5ProjContext.Users.FromSqlRaw("SelectAllAdmins").ToList();
+            var mapped = _mapper.Map<User>(adminsList);
 
-                var result = db.Database
-                    .SqlQuery<SelectAllAdmins>("SelectAllAdmins @IsAdminPS", isAdminParametr)
-                    .ToList();
-            }
+            return mapped;
         }*/
     }
 }

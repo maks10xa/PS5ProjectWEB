@@ -32,8 +32,7 @@ namespace PS5Proj.WEB_MVC
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<PS5ProjContext>(options => options.UseSqlServer(connection));
 
-            services.AddControllersWithViews()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0).AddSessionStateTempDataProvider();
+            services.AddControllersWithViews();
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IGameService, GameService>();
@@ -44,18 +43,28 @@ namespace PS5Proj.WEB_MVC
             services.AddScoped<IGameRepo, GameRepo>();
             services.AddScoped<ICostRepo, CostRepo>();
             services.AddScoped<IContactRepo, ContactRepo>();
+            
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-            services.AddIdentity<IdentityUser, IdentityRole>(opts =>
-            {
-                opts.User.RequireUniqueEmail = true;
-                opts.Password.RequiredLength = 6;
-                opts.Password.RequireNonAlphanumeric = false;
-                opts.Password.RequireUppercase = false;
-                opts.Password.RequireLowercase = false;
-                opts.Password.RequireDigit = false;
-            }).AddEntityFrameworkStores<PS5ProjContext>().AddDefaultTokenProviders();
+            //services.AddIdentity<IdentityUser, IdentityRole>(opts =>
+            //{
+            //    opts.User.RequireUniqueEmail = true;
+            //    opts.Password.RequiredLength = 6;
+            //    opts.Password.RequireNonAlphanumeric = false;
+            //    opts.Password.RequireUppercase = false;
+            //    opts.Password.RequireLowercase = false;
+            //    opts.Password.RequireDigit = false;
+            //}).AddDefaultTokenProviders();
+
+            //services.ConfigureApplicationCookie(options =>
+            //{
+            //    options.Cookie.Name = "myCompanyAuth";
+            //    options.Cookie.HttpOnly = true;
+            //    options.LoginPath = "/account/login";
+            //    options.AccessDeniedPath = "/account/accessdenied";
+            //    options.SlidingExpiration = true;
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -76,13 +85,14 @@ namespace PS5Proj.WEB_MVC
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Main}/{action=Index}/{id?}");
             });
         }
     }

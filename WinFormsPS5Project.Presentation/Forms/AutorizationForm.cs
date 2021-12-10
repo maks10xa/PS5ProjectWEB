@@ -59,11 +59,11 @@ namespace WinFormsPS5Project.Presentation
                 return;
             }
 
-            var isUserConsistInDb = _userService.IsUserConsistInDB(loginUser);
+            var doesUserExistInDb = _userService.DoesUserExistInDb(loginUser);
 
-            if (isUserConsistInDb)
+            if (doesUserExistInDb)
             {
-                _userAccaunt.User = _userService.GetUserByLogin(loginUser, passUser);
+                _userAccaunt.User = _userService.GetUserByLogin(loginUser);
                 this.Hide();
                 Menu menuForm = new Menu(_userAccaunt, _mapper);
                 menuForm.Show();

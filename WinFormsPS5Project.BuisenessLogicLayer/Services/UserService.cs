@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System.Collections.Generic;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 using WinFormsPS5Project.DataAccessLayer.Models;
@@ -29,17 +30,25 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             _pS5ProjContext.SaveChanges();
         }
 
-        public UsersModel GetUserByLogin(string login, string password)
+        public List<UsersModel> GetAllUsers()
         {
-            var user = _userRepo.GetUserByLogin(login, password);
+            var users = _userRepo.GetAllUsers();
+            var mapped = _mapper.Map<List<UsersModel>>(users);
+
+            return mapped;
+        }
+
+        public UsersModel GetUserByLogin(string login)
+        {
+            var user = _userRepo.GetUserByLogin(login);
             var db = _mapper.Map<UsersModel>(user);
 
             return db;
         }
 
-        public bool IsUserConsistInDB(string login)
+        public bool DoesUserExistInDb(string login)
         {
-            var db = _userRepo.IsUserConsistInDB(login);
+            var db = _userRepo.DoesUserExistInDb(login);
 
             //var user = _mapper.Map<bool>(db);
 

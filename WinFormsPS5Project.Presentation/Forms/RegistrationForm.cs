@@ -45,7 +45,7 @@ namespace WinFormsPS5Project.Presentation
                 return;
             }
 
-            var isUserConsistInDb = userService.IsUserConsistInDB(login);
+            var isUserConsistInDb = userService.DoesUserExistInDb(login);
 
             if (!isUserConsistInDb)
             {
