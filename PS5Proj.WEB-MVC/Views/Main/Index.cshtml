@@ -10,29 +10,13 @@
     </tr>
     @foreach (var g in Model)
     {
-        <tr>
-            <td>@g.GameName</td>
-            <td>@g.GameGenre</td>
-            <td>@g.ReleaseDate</td>
-            <td><a href="~/Home/Buy/@g.Id">Изменить</a></td>
-        </tr>
+<tr>
+    <td>@g.GameName</td>
+    <td>@g.GameGenre</td>
+    <td>@g.ReleaseDate</td>
+    <td><a href="~/Main/Update/@g.Id">Изменить</a></td>
+    <td><a href="~/Main/Delete/@g.Id">Удалить</a></td>
+</tr>
     }
 </table>
-<h3>Пользователи</h3>
-<table>
-    <tr>
-        <td>Имя</td>
-        <td>Логин</td>
-        <td>Статус</td>
-        <td></td>
-    </tr>
-    @foreach (var u in Model)
-    {
-        <tr>
-            <td>@g.GameName</td>
-            <td>@g.GameGenre</td>
-            <td>@g.ReleaseDate</td>
-            <td><a href="~/Home/Buy/@g.Id">Изменить</a></td>
-        </tr>
-    }
-</table>
+<h3><a href="~/Home/Add/">Добавить игру</a></h3>
