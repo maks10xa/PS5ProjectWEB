@@ -12,13 +12,11 @@ namespace PS5Proj.WEB_MVC.Controllers
 {
     public class MainController : Controller
     {
-        private IUserService _userService;
         private IGameService _gameService;
         private IMapper _mapper;
 
-        public MainController(IUserService userService, IMapper mapper)
+        public MainController(IMapper mapper)
         {
-            _userService = new UserService(mapper);
             _mapper = mapper;
             _gameService = new GameService(mapper);
         }
@@ -27,10 +25,23 @@ namespace PS5Proj.WEB_MVC.Controllers
             var a = _gameService.GetAllGames();
             var gameModel = _mapper.Map<List<GameMVC>>(a);
 
-            //var b = _userService.GetAllUsers();
-            //var userModel = _mapper.Map<List<UserMVC>>(b);
-
             return View(gameModel);
         }
+
+        [HttpGet]
+        public IActionResult Update(int? id)
+        {
+            if (id == null) return RedirectToAction("Index");
+            ViewBag.GameId = id;
+
+            return View();
+        }
+        //[HttpPost]
+        //public string Update(GameMVC game)
+        //{
+        //    _gameService.SetGameProperties(game, ViewBag.GameName, ViewBag.GameGenre, ViewBag.ReleaseDate, ViewBag.Img);
+
+        //    return Constant.SuccesfullyAddGame;
+        //}
     }
 }

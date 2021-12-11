@@ -1,0 +1,25 @@
+﻿<div>
+    <h3>Изменение данных игры</h3>
+    <form method="post">
+        <input type="hidden" value="@ViewBag.GameId" name="GameId" />
+        <table>
+            <tr>
+                <td>Название игры:</td>
+                <td><input type="text" name="GameName" /> </td>
+            </tr>
+            <tr>
+                <td>Жанр:</td>
+                <td><input type="text" name="GameGenre" /></td>
+            </tr>
+            <tr>
+                <td>Дата релиза:</td>
+                <td><input type="text" name="ReleaseDate" /></td>
+            </tr>
+            <tr>
+                <td>Ссылка на картинку:</td>
+                <td><input type="text" name="Img" /></td>
+            </tr>
+            <tr><td><input type="submit" value="Отправить" /> </td><td></td></tr>
+        </table>
+    </form>
+</div>

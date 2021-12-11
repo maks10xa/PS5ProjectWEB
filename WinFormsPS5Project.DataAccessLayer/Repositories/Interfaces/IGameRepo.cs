@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.ViewModels;
 
@@ -8,5 +9,8 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
     {
         List<GameModel> GetAllGames();
         GameModel GetGameByName(string name);
+        void SetImgRef(GameModel gameModel, string img);
+        void AddGame(GameModel gameModel);
+        void SetGameProperties(GameModel gameModel, string gameName, string gameGenre, DateTime release, string img);
     }
 }

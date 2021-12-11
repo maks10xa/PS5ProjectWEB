@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.Repositories;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
+using WinFormsPS5Project.DataAccessLayer.ViewModels;
 
 namespace WinFormsPS5Project.BuisenessLogicLayer.Services
 {
@@ -40,6 +42,30 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             var gameModel = _mapper.Map<GamesModel>(game);
 
             return gameModel;
+        }
+
+        public void SetFavoriteGame(GamesModel gameModel, string img)
+        {
+            var game = _mapper.Map<GameModel>(gameModel);
+
+            _gameRepo.SetImgRef(game, img);
+            _pS5ProjContext.SaveChanges();
+        }
+
+        public void AddGame(GamesModel gameModel)
+        {
+            var game = _mapper.Map<GameModel>(gameModel);
+
+            _gameRepo.AddGame(game);
+            _pS5ProjContext.SaveChanges();
+        }
+
+        public void SetGameProperties(GamesModel gameModel, string gameName, string gameGenre, DateTime release, string img)
+        {
+            var game = _mapper.Map<GameModel>(gameModel);
+
+            _gameRepo.SetGameProperties(game, gameName, gameGenre, release, img);
+            _pS5ProjContext.SaveChanges();
         }
     }
 }

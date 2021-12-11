@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using WinFormsPS5Project.DataAccessLayer.Models;
@@ -47,6 +48,24 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             game.Img = img;
         }
 
+        public void AddGame(GameModel gameModel)
+        {
+            var game = _mapper.Map<Game>(gameModel);
+            _pS5ProjContext.Games.Add(game);
+        }
 
+        public void SetGameProperties(GameModel gameModel, string gameName, string gameGenre, DateTime release, string img)
+        {
+            //у меня так
+            var game = _pS5ProjContext.Games.FirstOrDefault(g => g.Id == gameModel.Id);
+            game.GameName = gameName;
+            game.GameGenre = gameGenre;
+            game.ReleaseDate = release;
+            game.Img = img;
+
+            //хочу что-то типо того
+            //var game = _pS5ProjContext.Games.FirstOrDefault(g => g.Id == gameModel.Id);
+            //game = gameModel;
+        }
     }
 }

@@ -10,27 +10,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
 
 namespace PS5Proj.WEB_MVC.Controllers
 {
-    [Authorize]
     public class AccountController : Controller
     {
         private IUserService _userService;
         private IMapper _mapper;
 
-        public AccountController(IUserService userService, IMapper mapper)
+        public AccountController(IMapper mapper)
         {
-            _userService = userService;
+            _userService = new UserService(_mapper);
             _mapper = mapper;
         }
 
         [AllowAnonymous]
-        public IActionResult Login(string returnUrl)
+        public IActionResult Login()
         {
-            ViewBag.returnUrl = returnUrl;
-            return View(new LoginViewModel());
+            return View();
         }
 
         [HttpPost]
@@ -41,7 +40,7 @@ namespace PS5Proj.WEB_MVC.Controllers
             {
                 var user = _mapper.Map<UserModelDTO>(_userService.GetUserByLogin(model.UserLogin));
 
-                if (user != null && model.Password == user.Pass)
+                if (user != null && model.Pass == user.Pass)
                 {
                     await Authenticate(model.UserLogin);
 

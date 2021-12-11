@@ -1,29 +1,18 @@
 ﻿@model IEnumerable<PS5Proj.WEB_MVC.Models.GameMVC>
 
-
-<centr><h3>Список игр:</h3></centr>
-<div class="row align-items-start">
-    <div class="col">
-        <img src ="https://image.api.playstation.com/vulcan/img/rnd/202011/1020/2sD70skhUEhaf3gwCWJsEfGt.png?w=440&thumb=false" width="250" height="250" href="@Url.Action("Index", "Game")"/>
-    </div>
-    <div class="col">
-        <img src="https://ps5-gm.by/wp-content/uploads/2021/07/1605178121_1.jpg" width="250" height="250" href="@Url.Action(" Index", "Game" )" />
-    </div>
+<div class="d-flex align-content-center flex-wrap">
+    @foreach (var i in Model)
+    {
+        <div class="card" style="width: 20rem;">
+            <img src="@i.Img" width="250" height="250" class="img-responsive" alt="@i.GameName">
+            <div class="card-body">
+                <h5 class="card-title">@i.GameName</h5>
+            </div>
+            <div class="card-footer">
+                <div class="d-grid gap-2">
+                    <a class="btn btn-primary stretched-link" href="~/Main/Index" role="button">Подробнее</a>
+                </div>
+            </div>
+        </div>
+    }
 </div>
-<div class="row align-items-center">
-    <div class="col">
-        <img src="https://ps5-gm.by/wp-content/uploads/2021/07/23797-1.jpg" width="250" height="250" href="@Url.Action(" Index", "Game" )" />
-    </div>
-    <div class="col">
-        <img src="https://ps5-gm.by/wp-content/uploads/2021/07/ittakestwo.jpg" width="250" height="250" href="@Url.Action(" Index", "Game" )" />
-    </div>
-</div>
-<div class="row align-items-end">
-    <div class="col">
-        <img src="https://ps5-gm.by/wp-content/uploads/2021/07/1106094.jpg" width="250" height="250" href="@Url.Action(" Index", "Game" )" />
-    </div>
-    <div class="col">
-        <img src="https://ps5-gm.by/wp-content/uploads/2021/07/c8dbee16-42a4-41fe-91c4-b6b269c5288e.jpg" width="250" height="250" href="@Url.Action(" Index", "Game" )" />
-    </div>
-</div>
-

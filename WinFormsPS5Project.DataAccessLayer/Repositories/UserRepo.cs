@@ -60,34 +60,15 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
 
         public bool DoesUserIsAdmin(string login)
         {
-            var isAdmin = _pS5ProjContext.Users.Any(u => u.UserLogin == login && u.IsAdminPs);
+            var isAdmin = _pS5ProjContext.Users.Any(u => u.UserLogin == login && u.AdminPs);
 
             return isAdmin;
         }
 
         public void SetFavoriteGame(UserModel userModel, string favoriteGame)
         {
-            var user = _pS5ProjContext.Users.Select(u => new UserModel()
-                {
-                    Id = u.Id,
-                    UserLogin = u.UserLogin,
-                    Pass = u.Pass,
-                    UserName = u.UserName,
-                    FavoriteGame = u.FavoriteGame
-                }).First(u => u.Id == userModel.Id);
-
+            var user = _pS5ProjContext.Users.FirstOrDefault(u => u.Id == userModel.Id);
             user.FavoriteGame = favoriteGame;
-
-            var mapped = _mapper.Map<User>(user);
-            _pS5ProjContext.Users.Update(mapped);
         }
-
-        /*public List<UserModel> GetAllAdmins()
-        {
-            var adminsList = _pS5ProjContext.Users.FromSqlRaw("SelectAllAdmins").ToList();
-            var mapped = _mapper.Map<User>(adminsList);
-
-            return mapped;
-        }*/
     }
 }
