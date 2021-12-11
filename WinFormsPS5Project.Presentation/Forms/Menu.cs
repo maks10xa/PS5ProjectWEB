@@ -62,7 +62,7 @@ namespace WinFormsPS5Project.Presentation
 
         public void GetFavoriteGame()
         {
-            _userAccaunt.User = _userService.GetUserByLogin(_userAccaunt.User.UserLogin);
+            _userAccaunt.User = _userService.GetUserByLogin(_userAccaunt.User.UserLogin, _userAccaunt.User.Pass);
             
             _gamesListTxt.Text = Constant.FavoriteGame + _userAccaunt.User.FavoriteGame;
         }

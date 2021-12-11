@@ -1,0 +1,15 @@
+﻿@model UserMVC
+
+<section>
+    <h2>@Model.UserLogin</h2>
+    <ul class="small-image-list">
+        <li>
+            <p>@Model.UserName</p>
+            <p>@Model.FavoriteGame</p>
+            @if (Model.IsAdminPs)
+            {
+                <h2>admin</h2>
+            }
+        </li>
+    </ul>
+</section>

@@ -1,0 +1,32 @@
+﻿@model AddGame
+
+<h2>Добавьте игру</h2>
+
+<form asp-action="AddGame" asp-controller="Game" asp-anti-forgery="true">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <div>
+        <div>
+            <label asp-for="GameName">Название игры</label><br />
+            <input type="text" asp-for="GameName" />
+            <span asp-validation-for="GameName" />
+        </div>
+        <div>
+            <label asp-for="GameGenre">Жанр игры</label><br />
+            <input type="text" asp-for="GameGenre" />
+            <span asp-validation-for="GameGenre" />
+        </div>
+        <div>
+            <label asp-for="ReleaseDate">Дата релиза</label><br />
+            <input type="datetime" asp-for="ReleaseDate" />
+            <span asp-validation-for="ReleaseDate" />
+        </div>
+        <div>
+            <label asp-for="Image">Вставьте ссылку картинки</label><br />
+            <input type="text" asp-for="Image" />
+            <span asp-validation-for="Image" />
+        </div>
+        <div>
+            <input type="submit" value="Добавить игру" />
+        </div>
+    </div>
+</form>

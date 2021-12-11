@@ -1,12 +1,16 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using PS5Proj.WEB_MVC.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
+using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 
 namespace PS5Proj.WEB_MVC.Controllers
 {
@@ -28,6 +32,53 @@ namespace PS5Proj.WEB_MVC.Controllers
             var model = _mapper.Map<List<GameMVC>>(a);
 
             return View(model);
+        }
+
+        public IActionResult Info([FromQuery] string name)
+        {
+            var game = _gameService.GetGameByName(name);
+            var gameModel = _mapper.Map<GameMVC>(game);
+
+            return View(gameModel);
+        }
+
+        [HttpGet]
+        public IActionResult AddGame()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddGame(AddGame model)
+        {
+            if (ModelState.IsValid)
+            {
+                var game = _gameService.GetGameByName(model.GameName);
+                if (game == null)
+                {
+                    _gameService.AddGame(new GamesModel { GameName = model.GameName, GameGenre = model.GameGenre, ReleaseDate = model.ReleaseDate, Img = model.Image });
+
+                    await Authenticate(model.GameName);
+
+                    return RedirectToAction("Index", "Game"); 
+                }
+                else
+                    ModelState.AddModelError("", "Эта игра уже добавлена!");
+            }
+            return View(model);
+        }
+
+        private async Task Authenticate(string name)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, name)
+            };
+
+            ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
+
+            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
         }
     }
 }

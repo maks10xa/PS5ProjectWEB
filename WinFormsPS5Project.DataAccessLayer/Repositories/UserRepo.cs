@@ -36,19 +36,12 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             return mapped;
         }
 
-        public UserModel GetUserByLogin(string login)
+        public UserModel GetUserByLogin(string login, string password)
         {
-            var us = _pS5ProjContext.Users.Select(u => new UserModel()
-            {
-                Id = u.Id,
-                UserLogin = u.UserLogin,
-                Pass = u.Pass,
-                UserName = u.UserName,
-                FavoriteGame = u.FavoriteGame
+            var us = _pS5ProjContext.Users.FirstOrDefault(u => u.UserLogin == login && u.Pass == password);
+            var mapped = _mapper.Map<UserModel>(us);
 
-            }).First(u => u.UserLogin == login);
-
-          return us;
+            return mapped;
           }
 
         public bool DoesUserExistInDb(string login)

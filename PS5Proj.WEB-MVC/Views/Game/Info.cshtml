@@ -1,1 +1,13 @@
-﻿
+﻿@model GameMVC
+
+<section>
+    <h2>@Model.GameName</h2>
+    <ul class="small-image-list">
+        <li>
+            <a href="#"><img src="@Model.Img" /></a>
+            <p>@Model.GameGenre</p>
+            <p>@Model.ReleaseDate</p>
+            <h4><a href="~/Main/Update/@Model.Id">Изменить</a></h4>
+        </li>
+    </ul>
+</section>

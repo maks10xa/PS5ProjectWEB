@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PS5Proj.WEB_MVC.Models;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
+using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 
 namespace PS5Proj.WEB_MVC.Controllers
 {
@@ -20,7 +22,15 @@ namespace PS5Proj.WEB_MVC.Controllers
             _mapper = mapper;
             _gameService = new GameService(mapper);
         }
+
+        //[Authorize]
         public IActionResult Index()
+        {
+            //return Content(User.Identity.Name);
+            return View();
+        }
+
+        public IActionResult Test()
         {
             var a = _gameService.GetAllGames();
             var gameModel = _mapper.Map<List<GameMVC>>(a);
@@ -36,12 +46,13 @@ namespace PS5Proj.WEB_MVC.Controllers
 
             return View();
         }
-        //[HttpPost]
-        //public string Update(GameMVC game)
-        //{
-        //    _gameService.SetGameProperties(game, ViewBag.GameName, ViewBag.GameGenre, ViewBag.ReleaseDate, ViewBag.Img);
+        [HttpPost]
+        public string Update(GameMVC game)
+        {
+            var a = _mapper.Map<GamesModel>(game);
+            _gameService.SetGameProperties(a);
 
-        //    return Constant.SuccesfullyAddGame;
-        //}
+            return Constant.SuccesfullyAddGame;
+        }
     }
 }

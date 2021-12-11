@@ -12,6 +12,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using WinFormsPS5Project.BuisenessLogicLayer.Services;
 using WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces;
+using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 
 namespace PS5Proj.WEB_MVC.Controllers
 {
@@ -22,45 +23,85 @@ namespace PS5Proj.WEB_MVC.Controllers
 
         public AccountController(IMapper mapper)
         {
-            _userService = new UserService(_mapper);
             _mapper = mapper;
+            _userService = new UserService(_mapper);
         }
 
-        [AllowAnonymous]
+        [Authorize]
+        public IActionResult Profile()
+        {
+            return View();
+        }
+
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(LoginViewModel model)
         {
             if (ModelState.IsValid)
             {
-                var user = _mapper.Map<UserModelDTO>(_userService.GetUserByLogin(model.UserLogin));
+                var user = _mapper.Map<UserMVC>(_userService.GetUserByLogin(model.Login, model.Password));
 
-                if (user != null && model.Pass == user.Pass)
+                if (user != null && user.Pass == model.Password)
                 {
-                    await Authenticate(model.UserLogin);
+                    await Authenticate(model.Login);
 
-                    return Redirect(returnUrl ?? "/");
+                    return RedirectToAction("Profile", "Account"); 
                 }
-                ModelState.AddModelError(nameof(LoginViewModel.UserLogin), "Неверный логин или пароль!");
+                ModelState.AddModelError("", "Неверный логин или пароль!");
             }
             return View(model);
         }
 
-        private async Task Authenticate(string email)
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Register(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = _userService.GetUserByLogin(model.Login, model.Password);
+                if (user == null)
+                {
+                    _userService.Add(new UsersModel { UserName = model.Name, UserLogin = model.Login, Pass = model.Password });
+
+                    await Authenticate(model.Login); 
+
+                    return RedirectToAction("Index", "Main"); //изменить!!!!
+                }
+                else
+                    ModelState.AddModelError("", "Некорректные логин и(или) пароль");
+            }
+            return View(model);
+        }
+
+        private async Task Authenticate(string login)
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, email)
+                new Claim(ClaimTypes.Email, login)
             };
 
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);
 
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(id));
+        }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login", "Account");
         }
     }
 }

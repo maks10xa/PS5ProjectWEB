@@ -1,0 +1,22 @@
+﻿@model IEnumerable<PS5Proj.WEB_MVC.Models.GameMVC>
+
+<h3>Игры</h3>
+<table>
+    <tr>
+        <td>Игра</td>
+        <td>Жанр</td>
+        <td>Дата релиза</td>
+        <td></td>
+    </tr>
+    @foreach (var g in Model)
+    {
+        <tr>
+            <td>@g.GameName</td>
+            <td>@g.GameGenre</td>
+            <td>@g.ReleaseDate</td>
+            <td><a href="~/Main/Update/@g.Id">Изменить</a></td>
+        </tr>
+    }
+</table>
+
+

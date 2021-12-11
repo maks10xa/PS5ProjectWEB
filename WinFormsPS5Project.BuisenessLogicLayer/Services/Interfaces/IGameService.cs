@@ -10,6 +10,6 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces
         GamesModel GetGameByName(string name);
         void SetFavoriteGame(GamesModel gameModel, string img);
         void AddGame(GamesModel gameModel);
-        void SetGameProperties(GamesModel gameModel, string gameName, string gameGenre, DateTime release, string img);
+        void SetGameProperties(GamesModel gameModel);
     }
 }

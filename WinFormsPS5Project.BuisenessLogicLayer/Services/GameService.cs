@@ -60,11 +60,11 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             _pS5ProjContext.SaveChanges();
         }
 
-        public void SetGameProperties(GamesModel gameModel, string gameName, string gameGenre, DateTime release, string img)
+        public void SetGameProperties(GamesModel gameModel)
         {
             var game = _mapper.Map<GameModel>(gameModel);
 
-            _gameRepo.SetGameProperties(game, gameName, gameGenre, release, img);
+            _gameRepo.SetGameProperties(game);
             _pS5ProjContext.SaveChanges();
         }
     }
