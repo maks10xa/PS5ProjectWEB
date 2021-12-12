@@ -30,7 +30,7 @@ namespace PS5Proj.WEB_MVC.Controllers
         [Authorize]
         public IActionResult Profile()
         {
-            var login = User.Claims.FirstOrDefault(t => t.Type == ClaimTypes.Email).Value;
+            var login = User.Claims.FirstOrDefault(t => t.Type == ClaimTypes.Name).Value;
             var user = _mapper.Map<UserMVC>(_userService.GetUserByLogin(login));
 
             return View(user);
@@ -92,7 +92,7 @@ namespace PS5Proj.WEB_MVC.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, login)
+                new Claim(ClaimTypes.Name, login)
             };
 
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

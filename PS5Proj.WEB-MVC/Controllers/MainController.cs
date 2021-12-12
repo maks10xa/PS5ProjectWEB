@@ -12,6 +12,7 @@ using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 
 namespace PS5Proj.WEB_MVC.Controllers
 {
+    [Authorize]
     public class MainController : Controller
     {
         private IGameService _gameService;

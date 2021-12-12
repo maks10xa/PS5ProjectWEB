@@ -1,19 +1,24 @@
 ﻿@model IEnumerable<PS5Proj.WEB_MVC.Models.GameMVC>
 
-<div class="d-flex align-content-center flex-wrap">
-    @foreach (var i in Model)
-    {
-        <div class="card" style="width: 20rem;">
-            <img src="@i.Img" width="250" height="250" class="img-responsive" alt="@i.GameName">
-            <div class="card-body">
-                <h5 class="card-title">@i.GameName</h5>
-            </div>
-            <div class="card-footer">
-                <div class="d-grid gap-2">
-                    <a class="btn btn-primary stretched-link" href="~/Game/Info/@i.GameName" role="button">Подробнее</a>
+
+    <div class="d-flex align-content-center flex-wrap">
+        @foreach (var i in Model)
+        {
+        <form asp-action="Info" asp-controller="Game">
+
+            <div class="card" style="width: 20rem;">
+                <img src="@i.Img" width="250" height="250" class="img-responsive" alt="@i.GameName">
+                <div class="card-body">
+                    <h5 class="card-title">@i.GameName</h5>
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid gap-2">
+                        <input type="text" name="name" value="@i.GameName" hidden />
+                        <button type="submit">Подробнее</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    }
-    <a asp-action="AddGame" asp-controller="Game">Добавить игру</a>
-</div>
+        </form>
+        }
+        <a asp-action="AddGame" asp-controller="Game">Добавить игру</a>
+    </div>

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PS5Proj.WEB_MVC.Models;
 using System;
@@ -14,6 +15,7 @@ using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 
 namespace PS5Proj.WEB_MVC.Controllers
 {
+    [Authorize]
     public class GameController : Controller
     {
         private IUserService _userService;
@@ -34,36 +36,25 @@ namespace PS5Proj.WEB_MVC.Controllers
             return View(model);
         }
 
-        [HttpGet]
+        [HttpPost]
         public IActionResult Info(string name)
         {
-            if (name == null) return RedirectToAction("Index");
-            ViewBag.GameName = name;
+            var game = _gameService.GetGameByName(name);
+            var mappedGame = _mapper.Map<GameMVC>(game);
 
-            return View();
+            return View(mappedGame);
         }
-        //[HttpPost]
-        //public string Info(GameMVC game)
-        //{
-        //    _gameService.GetGameByName(game.GameName);
 
-        //    return Constant.SuccesfullyAddGame;
-        //}
+        [HttpPost]
+        public IActionResult AddToFavorite(string name)
+        {
+            var userName = User.FindFirst(ClaimTypes.Name).Value;
+            var user = _userService.GetUserByLogin(userName);
 
-        //[HttpGet]
-        //public IActionResult Info(GameMVC model)
-        //{
-        //    var game = _mapper.Map<GameMVC>(_gameService.GetGameByName(model.GameName));
+            _userService.SetFavoriteGame(user, name);
 
-        //    return View(game);
-        //}
-
-        //public IActionResult AddGameToFavorite(UserMVC user, string name)
-        //{
-        //    _userService.SetFavoriteGame(user, name);
-
-        //    return View();
-        //}
+            return NoContent();
+        }
 
         [HttpGet]
         public IActionResult AddGame()

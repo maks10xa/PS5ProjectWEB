@@ -9,6 +9,10 @@ namespace PS5Proj.WEB_MVC.Models
     {
         public string UserLogin { get; set; }
         public string FavoriteGame { get; set; }
+        public int GameId { get; set; }
         public string GameName { get; set; }
+        public string Img { get; set; }
+        public string GameGenre { get; set; }
+        public DateTime ReleaseDate { get; set; }
     }
 }
