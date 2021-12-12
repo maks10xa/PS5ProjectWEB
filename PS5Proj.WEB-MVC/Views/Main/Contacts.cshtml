@@ -1,0 +1,15 @@
+﻿@model IEnumerable<PS5Proj.WEB_MVC.Models.ContactMVC>
+
+<h3>Контакты</h3>
+<table>
+    @foreach (var c in Model)
+    {
+        <tr>
+            <td>@c.AdminName: <a href="tel: @c.PhoneNumber">@c.PhoneNumber</a></td>
+        </tr>
+    }
+</table>
+
+<section>
+    <h3>email: <a href="mailto: mail@ps5-gm.by">mail@ps5-gm.by</a></h3>
+</section>

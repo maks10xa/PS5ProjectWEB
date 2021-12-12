@@ -8,7 +8,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
     {
         void Add(UserModel user);
         List<UserModel> GetAllUsers();
-        UserModel GetUserByLogin(string login, string password);
+        UserModel GetUserByLogin(string login);
         bool DoesUserExistInDb(string login);
         void SetFavoriteGame(UserModel userModel, string favoriteGame);
         bool DoesUserIsAdmin(string login);

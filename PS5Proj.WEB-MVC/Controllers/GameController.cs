@@ -34,13 +34,36 @@ namespace PS5Proj.WEB_MVC.Controllers
             return View(model);
         }
 
-        public IActionResult Info([FromQuery] string name)
+        [HttpGet]
+        public IActionResult Info(string name)
         {
-            var game = _gameService.GetGameByName(name);
-            var gameModel = _mapper.Map<GameMVC>(game);
+            if (name == null) return RedirectToAction("Index");
+            ViewBag.GameName = name;
 
-            return View(gameModel);
+            return View();
         }
+        //[HttpPost]
+        //public string Info(GameMVC game)
+        //{
+        //    _gameService.GetGameByName(game.GameName);
+
+        //    return Constant.SuccesfullyAddGame;
+        //}
+
+        //[HttpGet]
+        //public IActionResult Info(GameMVC model)
+        //{
+        //    var game = _mapper.Map<GameMVC>(_gameService.GetGameByName(model.GameName));
+
+        //    return View(game);
+        //}
+
+        //public IActionResult AddGameToFavorite(UserMVC user, string name)
+        //{
+        //    _userService.SetFavoriteGame(user, name);
+
+        //    return View();
+        //}
 
         [HttpGet]
         public IActionResult AddGame()

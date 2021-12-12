@@ -9,7 +9,7 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces
     {
         void Add(UsersModel userModel);
         List<UsersModel> GetAllUsers();
-        UsersModel GetUserByLogin(string login, string password);
+        UsersModel GetUserByLogin(string login);
         bool DoesUserExistInDb(string login);
         void SetFavoriteGame(UsersModel userModel, string favoriteGame);
         bool DoesUserIsAdmin(string login);

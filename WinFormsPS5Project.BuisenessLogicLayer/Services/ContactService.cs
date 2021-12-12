@@ -4,6 +4,7 @@ using WinFormsPS5Project.DataAccessLayer.Models;
 using WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces;
 using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 using WinFormsPS5Project.DataAccessLayer.Repositories;
+using System.Collections.Generic;
 
 namespace WinFormsPS5Project.BuisenessLogicLayer.Services
 {
@@ -26,6 +27,14 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             var contModel = _mapper.Map<ContactsModel>(cont);
 
             return contModel;
+        }
+
+        public List<ContactsModel> GetAdminsContacts()
+        {
+            var contacts = _contactRepo.GetAdminsContacts();
+            var mapped = _mapper.Map<List<ContactsModel>>(contacts);
+
+            return mapped;
         }
     }
 }

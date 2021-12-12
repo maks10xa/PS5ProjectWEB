@@ -8,7 +8,7 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces
     {
         List<GamesModel> GetAllGames();
         GamesModel GetGameByName(string name);
-        void SetFavoriteGame(GamesModel gameModel, string img);
+        void SetImgRef(GamesModel gameModel, string img);
         void AddGame(GamesModel gameModel);
         void SetGameProperties(GamesModel gameModel);
     }

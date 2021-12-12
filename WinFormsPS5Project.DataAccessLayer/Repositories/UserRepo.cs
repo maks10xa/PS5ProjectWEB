@@ -36,9 +36,9 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             return mapped;
         }
 
-        public UserModel GetUserByLogin(string login, string password)
+        public UserModel GetUserByLogin(string login)
         {
-            var us = _pS5ProjContext.Users.FirstOrDefault(u => u.UserLogin == login && u.Pass == password);
+            var us = _pS5ProjContext.Users.FirstOrDefault(u => u.UserLogin == login);
             var mapped = _mapper.Map<UserModel>(us);
 
             return mapped;

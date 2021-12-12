@@ -30,7 +30,10 @@ namespace PS5Proj.WEB_MVC.Controllers
         [Authorize]
         public IActionResult Profile()
         {
-            return View();
+            var login = User.Claims.FirstOrDefault(t => t.Type == ClaimTypes.Email).Value;
+            var user = _mapper.Map<UserMVC>(_userService.GetUserByLogin(login));
+
+            return View(user);
         }
 
         [HttpGet]
@@ -45,7 +48,7 @@ namespace PS5Proj.WEB_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _mapper.Map<UserMVC>(_userService.GetUserByLogin(model.Login, model.Password));
+                var user = _mapper.Map<UserMVC>(_userService.GetUserByLogin(model.Login));
 
                 if (user != null && user.Pass == model.Password)
                 {
@@ -70,14 +73,14 @@ namespace PS5Proj.WEB_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = _userService.GetUserByLogin(model.Login, model.Password);
+                var user = _userService.GetUserByLogin(model.Login);
                 if (user == null)
                 {
                     _userService.Add(new UsersModel { UserName = model.Name, UserLogin = model.Login, Pass = model.Password });
 
                     await Authenticate(model.Login); 
 
-                    return RedirectToAction("Index", "Main"); //изменить!!!!
+                    return RedirectToAction("Profile", "Account"); 
                 }
                 else
                     ModelState.AddModelError("", "Некорректные логин и(или) пароль");

@@ -31,15 +31,10 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
 
         public GameModel GetGameByName(string name)
         {
-            var game = _pS5ProjContext.Games.Select(g => new GameModel()
-            {
-                Id = g.Id,
-                GameName = g.GameName,
-                GameGenre = g.GameGenre,
-                ReleaseDate = g.ReleaseDate
-            }).FirstOrDefault();
+            var game = _pS5ProjContext.Games.FirstOrDefault(g => g.GameName == name);
+            var mapped = _mapper.Map<GameModel>(game);
 
-            return game;
+            return mapped;
         }
 
         public void SetImgRef(GameModel gameModel, string img)

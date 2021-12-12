@@ -25,10 +25,6 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
 
         public List<GamesModel> GetAllGames()
         {
-            //var games = _mapper.Map<List<GamesModel>>(_gameRepo.GetAllGames());
-
-            //return games;
-
             var games = _gameRepo.GetAllGames();
             var mapped = _mapper.Map<List<GamesModel>>(games);
 
@@ -44,7 +40,7 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             return gameModel;
         }
 
-        public void SetFavoriteGame(GamesModel gameModel, string img)
+        public void SetImgRef(GamesModel gameModel, string img)
         {
             var game = _mapper.Map<GameModel>(gameModel);
 

@@ -63,7 +63,7 @@ namespace WinFormsPS5Project.Presentation
 
             if (doesUserExistInDb)
             {
-                _userAccaunt.User = _userService.GetUserByLogin(loginUser, passUser);
+                _userAccaunt.User = _userService.GetUserByLogin(loginUser);
                 this.Hide();
                 Menu menuForm = new Menu(_userAccaunt, _mapper);
                 menuForm.Show();

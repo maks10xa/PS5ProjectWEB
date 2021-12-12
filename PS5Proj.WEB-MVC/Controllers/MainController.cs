@@ -15,12 +15,16 @@ namespace PS5Proj.WEB_MVC.Controllers
     public class MainController : Controller
     {
         private IGameService _gameService;
+        private ICostsService _costsService;
+        private IContactService _contactService;
         private IMapper _mapper;
 
         public MainController(IMapper mapper)
         {
             _mapper = mapper;
             _gameService = new GameService(mapper);
+            _costsService = new CostsService(mapper);
+            _contactService = new ContactService(mapper);
         }
 
         //[Authorize]
@@ -54,5 +58,27 @@ namespace PS5Proj.WEB_MVC.Controllers
 
             return Constant.SuccesfullyAddGame;
         }
+
+        public IActionResult Costs()
+        {
+            var a = _costsService.GetAllCosts();
+            var costModel = _mapper.Map<List<CostMVC>>(a);
+
+            return View(costModel);
+        }
+
+        public IActionResult Info()
+        {
+            return View();
+        }
+
+        public IActionResult Contacts()
+        {
+            var a = _contactService.GetAdminsContacts();
+            var contactsModel = _mapper.Map<List<ContactMVC>>(a);
+
+            return View(contactsModel);
+        }
+
     }
 }

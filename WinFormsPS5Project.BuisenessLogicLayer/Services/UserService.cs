@@ -38,9 +38,9 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             return mapped;
         }
 
-        public UsersModel GetUserByLogin(string login, string password)
+        public UsersModel GetUserByLogin(string login)
         {
-            var user = _userRepo.GetUserByLogin(login, password);
+            var user = _userRepo.GetUserByLogin(login);
             var db = _mapper.Map<UsersModel>(user);
 
             return db;
