@@ -15,7 +15,6 @@ using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 
 namespace PS5Proj.WEB_MVC.Controllers
 {
-    [Authorize]
     public class GameController : Controller
     {
         private IUserService _userService;
@@ -30,8 +29,8 @@ namespace PS5Proj.WEB_MVC.Controllers
         }
         public IActionResult Index()
         {
-            var a = _gameService.GetAllGames();
-            var model = _mapper.Map<List<GameMVC>>(a);
+            var games = _gameService.GetAllGames();
+            var model = _mapper.Map<List<GameMVC>>(games);
 
             return View(model);
         }
@@ -45,6 +44,7 @@ namespace PS5Proj.WEB_MVC.Controllers
             return View(mappedGame);
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddToFavorite(string name)
         {
@@ -56,6 +56,25 @@ namespace PS5Proj.WEB_MVC.Controllers
             return NoContent();
         }
 
+        [Authorize]
+        [HttpGet]
+        public IActionResult Update(int? id)
+        {
+            if (id == null) return RedirectToAction("Info");
+            ViewBag.GameId = id;
+
+            return View();
+        }
+        [HttpPost]
+        public string Update(GameMVC game)
+        {
+            var mapped = _mapper.Map<GamesModel>(game);
+            _gameService.SetGameProperties(mapped);
+
+            return Constant.SuccesfullyAddGame;
+        }
+
+        [Authorize]
         [HttpGet]
         public IActionResult AddGame()
         {

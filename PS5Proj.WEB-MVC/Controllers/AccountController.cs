@@ -92,7 +92,7 @@ namespace PS5Proj.WEB_MVC.Controllers
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, login)
+                new Claim(ClaimTypes.Name, login),
             };
 
             ClaimsIdentity id = new ClaimsIdentity(claims, "ApplicationCookie", ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

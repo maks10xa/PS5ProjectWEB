@@ -12,7 +12,6 @@ using WinFormsPS5Project.BuisenessLogicLayer.ViewModels;
 
 namespace PS5Proj.WEB_MVC.Controllers
 {
-    [Authorize]
     public class MainController : Controller
     {
         private IGameService _gameService;
@@ -28,42 +27,23 @@ namespace PS5Proj.WEB_MVC.Controllers
             _contactService = new ContactService(mapper);
         }
 
-        //[Authorize]
         public IActionResult Index()
         {
-            //return Content(User.Identity.Name);
             return View();
         }
 
         public IActionResult Test()
         {
-            var a = _gameService.GetAllGames();
-            var gameModel = _mapper.Map<List<GameMVC>>(a);
+            var game = _gameService.GetAllGames();
+            var gameModel = _mapper.Map<List<GameMVC>>(game);
 
             return View(gameModel);
         }
 
-        [HttpGet]
-        public IActionResult Update(int? id)
-        {
-            if (id == null) return RedirectToAction("Index");
-            ViewBag.GameId = id;
-
-            return View();
-        }
-        [HttpPost]
-        public string Update(GameMVC game)
-        {
-            var a = _mapper.Map<GamesModel>(game);
-            _gameService.SetGameProperties(a);
-
-            return Constant.SuccesfullyAddGame;
-        }
-
         public IActionResult Costs()
         {
-            var a = _costsService.GetAllCosts();
-            var costModel = _mapper.Map<List<CostMVC>>(a);
+            var costs = _costsService.GetAllCosts();
+            var costModel = _mapper.Map<List<CostMVC>>(costs);
 
             return View(costModel);
         }
@@ -75,8 +55,8 @@ namespace PS5Proj.WEB_MVC.Controllers
 
         public IActionResult Contacts()
         {
-            var a = _contactService.GetAdminsContacts();
-            var contactsModel = _mapper.Map<List<ContactMVC>>(a);
+            var contacts = _contactService.GetAdminsContacts();
+            var contactsModel = _mapper.Map<List<ContactMVC>>(contacts);
 
             return View(contactsModel);
         }

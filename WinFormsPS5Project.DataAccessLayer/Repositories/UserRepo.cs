@@ -64,4 +64,4 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             user.FavoriteGame = favoriteGame;
         }
     }
-}
+}   
