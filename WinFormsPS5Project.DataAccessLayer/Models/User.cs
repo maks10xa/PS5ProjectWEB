@@ -20,6 +20,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
         public string FavoriteGame { get; set; }
         public int? GameId { get; set; }
         public int? ContactsId { get; set; }
+        public decimal? Balance { get; set; }
 
         public virtual Contact ContactsNavigation { get; set; }
         public virtual Game Game { get; set; }

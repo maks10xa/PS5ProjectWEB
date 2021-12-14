@@ -12,5 +12,7 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories.Interfaces
         bool DoesUserExistInDb(string login);
         void SetFavoriteGame(UserModel userModel, string favoriteGame);
         bool DoesUserIsAdmin(string login);
+        void Refill(UserModel userModel, decimal cost);
+        void PayOrder(UserModel userModel, decimal cost);
     }
 }

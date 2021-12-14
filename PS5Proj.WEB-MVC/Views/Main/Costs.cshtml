@@ -1,16 +1,18 @@
 ﻿@model IEnumerable<PS5Proj.WEB_MVC.Models.CostMVC>
 
-
-@foreach(var c in Model)
-{
-    <div class="columns">
-        <ul class="price">
-            <li class="header">@c.TimePeriod</li>
-            <li class="grey">@String.Format("{0:C}", c.CostOfPeriod).ToString()</li>
-            <li>Два геймпада</li>
-            <li>Игры на ваш выбор</li>
-            <li>Скидка на следующий заказ 10%</li>
-            <li class="grey"><a href="~/Main/Contacts/" class="button">Заказать</a></li>
-        </ul>
-    </div>
-}
+<form method="post" asp-action="Pay" asp-controller="Account">
+    @foreach (var c in Model)
+    {
+        <div class="columns">
+            <ul class="price">
+                <li class="header">@c.TimePeriod</li>
+                <li class="grey">@String.Format("{0:C}", c.CostOfPeriod).ToString()</li>
+                <li>Два геймпада</li>
+                <li>Игры на ваш выбор</li>
+                <li>Скидка на следующий заказ 10%</li>
+                <input type="text" name="cost" value="@c.CostOfPeriod" hidden />
+                <button class="btn btn-primary stretched-link">Оплатить</button>
+            </ul>
+        </div>
+    }
+</form>

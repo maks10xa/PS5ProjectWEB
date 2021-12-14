@@ -63,5 +63,18 @@ namespace WinFormsPS5Project.DataAccessLayer.Repositories
             var user = _pS5ProjContext.Users.FirstOrDefault(u => u.Id == userModel.Id);
             user.FavoriteGame = favoriteGame;
         }
+
+        public void Refill(UserModel userModel, decimal cost)
+        {
+            var user = _pS5ProjContext.Users.FirstOrDefault(u => u.Id == userModel.Id);
+            user.Balance += cost;
+        }
+
+        public void PayOrder(UserModel userModel, decimal cost)
+        {
+            var user = _pS5ProjContext.Users.FirstOrDefault(u => u.Id == userModel.Id);
+            user.Balance -= cost;
+        }
     }
-}   
+}
+   

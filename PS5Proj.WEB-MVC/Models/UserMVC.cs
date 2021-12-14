@@ -13,5 +13,7 @@ namespace PS5Proj.WEB_MVC.Models
         public string UserName { get; set; }
         public bool IsAdminPs { get; set; }
         public string FavoriteGame { get; set; }
+        public decimal? Balance { get; set; }
+        public decimal Cost { get; set; }
     }
 }

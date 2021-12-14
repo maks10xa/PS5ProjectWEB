@@ -69,5 +69,21 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services
             _userRepo.SetFavoriteGame(user, favoriteGame);
             _pS5ProjContext.SaveChanges();
         }
+
+        public void Refill(UsersModel userModel, decimal cost)
+        {
+            var user = _mapper.Map<UserModel>(userModel);
+
+            _userRepo.Refill(user, cost);
+            _pS5ProjContext.SaveChanges();
+        }
+
+        public void PayOrder(UsersModel userModel, decimal cost)
+        {
+            var user = _mapper.Map<UserModel>(userModel);
+
+            _userRepo.PayOrder(user, cost);
+            _pS5ProjContext.SaveChanges();
+        }
     }
 }

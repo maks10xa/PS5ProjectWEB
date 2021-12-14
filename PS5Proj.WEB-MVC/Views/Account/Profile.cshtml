@@ -1,6 +1,7 @@
 ﻿@model UserMVC
 
-    <a asp-action="Logout" asp-controller="Account">Выйти</a>
+<a asp-action="Logout" asp-controller="Account">Выйти</a>
+
 
 <section>
     <h2>@Model.UserLogin</h2>
@@ -8,11 +9,12 @@
         <li>
             <p>Имя: @Model.UserName</p>
             <p>Любимая игра: @Model.FavoriteGame</p>
-            @if (Model.IsAdminPs)
-            {
-                <h2>admin</h2>
-            }
+            <p>Баланс: @String.Format("{0:C}", Model.Balance).ToString()</p>
 
         </li>
     </ul>
+</section>
+
+<section>
+    <h4><a href="~/Account/TopUpBalance/@Model.Id">Пополнить баланс</a></h4>
 </section>

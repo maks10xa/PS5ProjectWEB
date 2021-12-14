@@ -8,5 +8,6 @@
         public string UserName { get; set; }
         public bool IsAdminPs { get; set; }
         public string FavoriteGame { get; set; }
+        public decimal? Balance { get; set; }
     }
 }

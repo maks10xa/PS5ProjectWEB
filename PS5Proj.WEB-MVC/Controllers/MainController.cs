@@ -60,6 +60,5 @@ namespace PS5Proj.WEB_MVC.Controllers
 
             return View(contactsModel);
         }
-
     }
 }

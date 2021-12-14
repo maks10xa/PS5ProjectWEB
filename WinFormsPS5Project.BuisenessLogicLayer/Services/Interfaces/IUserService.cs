@@ -13,5 +13,7 @@ namespace WinFormsPS5Project.BuisenessLogicLayer.Services.Interfaces
         bool DoesUserExistInDb(string login);
         void SetFavoriteGame(UsersModel userModel, string favoriteGame);
         bool DoesUserIsAdmin(string login);
+        void Refill(UsersModel userModel, decimal cost);
+        void PayOrder(UsersModel userModel, decimal cost);
     }
 }

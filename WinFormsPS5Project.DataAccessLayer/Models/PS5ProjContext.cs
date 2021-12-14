@@ -113,6 +113,8 @@ namespace WinFormsPS5Project.DataAccessLayer.Models
             {
                 entity.Property(e => e.AdminPs).HasColumnName("AdminPS");
 
+                entity.Property(e => e.Balance).HasColumnType("money");
+
                 entity.Property(e => e.FavoriteGame).HasMaxLength(64);
 
                 entity.Property(e => e.Pass).HasMaxLength(18);

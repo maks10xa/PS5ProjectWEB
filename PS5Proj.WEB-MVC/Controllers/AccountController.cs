@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PS5Proj.WEB_MVC.Models;
-using PS5Proj.WEB_MVC.ModelServices.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,6 +33,42 @@ namespace PS5Proj.WEB_MVC.Controllers
             var user = _mapper.Map<UserMVC>(_userService.GetUserByLogin(login));
 
             return View(user);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Pay(decimal cost)
+        {
+            var userName = User.FindFirst(ClaimTypes.Name).Value;
+            var user = _userService.GetUserByLogin(userName);
+
+            if (user.Balance < cost)
+            {
+                return RedirectToAction("TopUpBalance", "Account");
+            }
+            else
+            {
+                _userService.PayOrder(user, cost);
+            }
+            
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult TopUpBalance(int? id)
+        {
+            if (id == null) return RedirectToAction("Profile");
+            ViewBag.UserId = id;
+
+            return View();
+        }
+        [HttpPost]
+        public string TopUpBalance(UserMVC user)
+        {
+            var mapped = _mapper.Map<UsersModel>(user);
+            _userService.Refill(mapped, user.Cost);
+
+            return Constant.SuccessfullyRefill;
         }
 
         [HttpGet]
